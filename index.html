@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DashPulse • Production SaaS Admin Dashboard</title>
+  <meta name="description" content="Production-quality, accessible SaaS admin dashboard template built with HTML5, Tailwind CSS, Lucide icons, and Chart.js.">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              200: '#bae6fd',
+              300: '#7dd3fc',
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              800: '#075985',
+              900: '#0c4a6e',
+              950: '#082f49'
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 min-h-screen flex antialiased transition-colors duration-200">
+
+  <!-- ========================================================================= -->
+  <!-- MOBILE SIDEBAR OFFCANVAS BACKDROP & DRAWER                                -->
+  <!-- ========================================================================= -->
+  <div id="mobile-sidebar-backdrop" class="fixed inset-0 z-40 bg-slate-900/60 backdrop-blur-sm hidden lg:hidden transition-opacity" aria-hidden="true"></div>
+
+  <aside id="mobile-sidebar-drawer" class="fixed inset-y-0 left-0 z-50 w-72 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 p-5 flex flex-col justify-between transform -translate-x-full transition-transform duration-300 ease-in-out lg:hidden" aria-label="Mobile Navigation">
+    <div class="space-y-6">
+      <!-- Mobile Drawer Brand Header -->
+      <div class="flex items-center justify-between">
+        <a href="#dashboard" class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center text-white shadow-md shadow-blue-500/20">
+            <i data-lucide="zap" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <span class="font-bold text-base tracking-tight text-slate-900 dark:text-white">DashPulse</span>
+            <span class="block text-[10px] font-mono text-blue-600 dark:text-blue-400 uppercase tracking-widest font-semibold">Admin SaaS</span>
+          </div>
+        </a>
+        <button id="btn-close-mobile-sidebar" type="button" class="p-2 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 rounded-lg" aria-label="Close menu">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="space-y-5">
+        <div>
+          <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-3 mb-2">Overview</div>
+          <div class="space-y-1">
+            <a href="#dashboard" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors">
+              <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
+              <span>Dashboard</span>
+            </a>
+            <a href="#analytics" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors">
+              <i data-lucide="bar-chart-3" class="w-4 h-4"></i>
+              <span>Analytics</span>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-3 mb-2">Management</div>
+          <div class="space-y-1">
+            <a href="#users" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors">
+              <i data-lucide="users" class="w-4 h-4"></i>
+              <span>Users</span>
+            </a>
+            <a href="#orders" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors">
+              <i data-lucide="receipt" class="w-4 h-4"></i>
+              <span>Orders & Billing</span>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-3 mb-2">Insights</div>
+          <div class="space-y-1">
+            <a href="#reports" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors">
+              <i data-lucide="file-text" class="w-4 h-4"></i>
+              <span>Reports</span>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-3 mb-2">System</div>
+          <div class="space-y-1">
+            <a href="#settings" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors">
+              <i data-lucide="settings" class="w-4 h-4"></i>
+              <span>Settings</span>
+            </a>
+            <a href="#help" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors">
+              <i data-lucide="help-circle" class="w-4 h-4"></i>
+              <span>Help & Docs</span>
+            </a>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Mobile Drawer Footer User Info -->
+    <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center gap-3">
+      <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" alt="Avatar" class="w-9 h-9 rounded-xl object-cover border border-slate-200 dark:border-slate-700">
+      <div class="min-w-0 flex-1">
+        <div class="text-xs font-bold text-slate-900 dark:text-white truncate">Alex Rivera</div>
+        <div class="text-[11px] text-slate-400 truncate">Super Admin</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ========================================================================= -->
+  <!-- DESKTOP COLLAPSIBLE SIDEBAR                                               -->
+  <!-- ========================================================================= -->
+  <aside id="sidebar" class="hidden lg:flex flex-col justify-between w-64 bg-white dark:bg-slate-900 border-r border-slate-200/80 dark:border-slate-800/80 sticky top-0 h-screen z-30 select-none transition-all duration-300 ease-in-out" aria-label="Main Navigation">
+    <div class="p-4 flex-1 overflow-y-auto space-y-6">
+      <!-- Brand Logo & Header -->
+      <div class="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800/60">
+        <a href="#dashboard" class="flex items-center gap-3 group">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center text-white shadow-md shadow-blue-500/20 flex-shrink-0 group-hover:scale-105 transition-transform">
+            <i data-lucide="zap" class="w-5 h-5"></i>
+          </div>
+          <div id="brand-text" class="transition-opacity overflow-hidden">
+            <span class="font-bold text-base tracking-tight text-slate-900 dark:text-white block leading-tight">DashPulse</span>
+            <span class="text-[10px] font-mono text-blue-600 dark:text-blue-400 uppercase tracking-widest font-semibold block">Admin Console</span>
+          </div>
+        </a>
+
+        <!-- Collapse Sidebar Button -->
+        <button id="btn-sidebar-collapse" type="button" class="p-1.5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" title="Toggle Sidebar (Ctrl+B)">
+          <i data-lucide="panel-left-close" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <!-- Navigation Menu Groups -->
+      <nav class="space-y-6" aria-label="Sidebar Menu">
+        <!-- Overview Group -->
+        <div>
+          <div class="nav-section-title text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-3 mb-2">Overview</div>
+          <div class="space-y-1">
+            <a href="#dashboard" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors" title="Dashboard">
+              <i data-lucide="layout-dashboard" class="w-4 h-4 flex-shrink-0"></i>
+              <span class="nav-link-text">Dashboard</span>
+            </a>
+            <a href="#analytics" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors" title="Analytics">
+              <i data-lucide="bar-chart-3" class="w-4 h-4 flex-shrink-0"></i>
+              <span class="nav-link-text">Analytics</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Management Group -->
+        <div>
+          <div class="nav-section-title text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-3 mb-2">Management</div>
+          <div class="space-y-1">
+            <a href="#users" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors" title="Users">
+              <i data-lucide="users" class="w-4 h-4 flex-shrink-0"></i>
+              <span class="nav-link-text">Users</span>
+            </a>
+            <a href="#orders" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors" title="Orders">
+              <i data-lucide="receipt" class="w-4 h-4 flex-shrink-0"></i>
+              <span class="nav-link-text">Orders & Invoices</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Insights Group -->
+        <div>
+          <div class="nav-section-title text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-3 mb-2">Insights</div>
+          <div class="space-y-1">
+            <a href="#reports" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors" title="Reports">
+              <i data-lucide="file-text" class="w-4 h-4 flex-shrink-0"></i>
+              <span class="nav-link-text">Reports & Exports</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- System Group -->
+        <div>
+          <div class="nav-section-title text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-3 mb-2">System</div>
+          <div class="space-y-1">
+            <a href="#settings" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors" title="Settings">
+              <i data-lucide="settings" class="w-4 h-4 flex-shrink-0"></i>
+              <span class="nav-link-text">Settings</span>
+            </a>
+            <a href="#help" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors" title="Help & Docs">
+              <i data-lucide="help-circle" class="w-4 h-4 flex-shrink-0"></i>
+              <span class="nav-link-text">Help & Docs</span>
+            </a>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Sidebar Bottom Status Footer -->
+    <div class="p-3 border-t border-slate-100 dark:border-slate-800/60">
+      <div class="flex items-center gap-3 p-2 rounded-xl bg-slate-50 dark:bg-slate-800/50">
+        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse flex-shrink-0"></span>
+        <div class="nav-link-text min-w-0 flex-1 text-[11px] text-slate-500 dark:text-slate-400 truncate">
+          <span>System status:</span>
+          <span class="font-semibold text-emerald-600 dark:text-emerald-400">Operational</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ========================================================================= -->
+  <!-- MAIN APP WRAPPER: TOPBAR + PAGE VIEW                                      -->
+  <!-- ========================================================================= -->
+  <div class="flex-1 flex flex-col min-w-0">
+    <!-- Top Navigation Bar -->
+    <header class="sticky top-0 z-20 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800/80 px-4 sm:px-6 py-3 flex items-center justify-between gap-4 select-none">
+      <!-- Left: Mobile Menu Toggle & Breadcrumbs -->
+      <div class="flex items-center gap-3 min-w-0">
+        <button id="btn-mobile-hamburger" type="button" class="lg:hidden p-2 text-slate-500 hover:text-slate-700 dark:hover:text-slate-200 rounded-lg" aria-label="Open navigation drawer">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+
+        <!-- Dynamic Breadcrumb Container -->
+        <div id="breadcrumbs-container" class="min-w-0">
+          <!-- Injected via DashComponents.updateBreadcrumbs -->
+        </div>
+      </div>
+
+      <!-- Right: Global Search, Theme Toggle, Notification & Profile Menus -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Global Search Bar Button -->
+        <button id="global-search-trigger" type="button" class="flex items-center gap-2 px-3 py-1.5 text-xs text-slate-400 bg-slate-100 dark:bg-slate-800/70 hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-200/60 dark:border-slate-700/60 rounded-xl transition-colors" title="Search (Ctrl+K)">
+          <i data-lucide="search" class="w-3.5 h-3.5"></i>
+          <span class="hidden md:inline-block">Search anything...</span>
+          <kbd class="hidden md:inline-block font-mono text-[10px] text-slate-400 bg-white dark:bg-slate-900 px-1.5 py-0.5 rounded border border-slate-200 dark:border-slate-700 shadow-xs">Ctrl K</kbd>
+        </button>
+
+        <!-- Light / Dark Theme Toggle Button -->
+        <button id="theme-toggle-btn" type="button" class="p-2 text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors" title="Toggle Theme (Ctrl+D)" aria-label="Toggle Theme">
+          <i id="theme-icon-moon" data-lucide="moon" class="w-4 h-4"></i>
+          <i id="theme-icon-sun" data-lucide="sun" class="w-4 h-4 hidden text-amber-500"></i>
+        </button>
+
+        <!-- Notification Dropdown Menu Button -->
+        <div class="relative">
+          <button id="notifications-menu-btn" type="button" class="relative p-2 text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors" aria-label="Notifications" aria-expanded="false">
+            <i data-lucide="bell" class="w-4 h-4"></i>
+            <span id="notifications-badge" class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-blue-600 ring-2 ring-white dark:ring-slate-900"></span>
+          </button>
+
+          <!-- Notifications Dropdown Panel -->
+          <div id="notifications-dropdown" class="hidden absolute right-0 mt-2 w-80 sm:w-96 bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 z-50 overflow-hidden transform origin-top-right transition-all">
+            <div class="p-4 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+              <div>
+                <h3 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">Notifications</h3>
+                <p class="text-[11px] text-slate-400 mt-0.5">Real-time alerts and activity</p>
+              </div>
+              <button id="btn-mark-all-notifications-read" type="button" class="text-[11px] font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-400">
+                Mark all as read
+              </button>
+            </div>
+            <div class="max-h-80 overflow-y-auto divide-y divide-slate-100 dark:divide-slate-800/60" id="notifications-list">
+              <!-- Dynamically populated -->
+            </div>
+            <div class="p-2.5 text-center bg-slate-50 dark:bg-slate-800/40 border-t border-slate-100 dark:border-slate-800">
+              <a href="#help" class="text-xs text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 font-medium">Notification Settings</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="h-5 w-px bg-slate-200 dark:bg-slate-800"></div>
+
+        <!-- User Profile Dropdown Menu -->
+        <div class="relative">
+          <button id="user-profile-menu-btn" type="button" class="flex items-center gap-2.5 p-1 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" aria-label="User Profile" aria-expanded="false">
+            <div class="relative">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" alt="Alex Rivera" class="w-8 h-8 rounded-full object-cover border border-slate-200 dark:border-slate-700">
+              <span class="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-emerald-500 ring-2 ring-white dark:ring-slate-900"></span>
+            </div>
+            <div class="hidden sm:block text-left pr-1">
+              <div class="text-xs font-bold text-slate-900 dark:text-white leading-tight">Alex Rivera</div>
+              <div class="text-[10px] text-slate-400 leading-tight">Super Admin</div>
+            </div>
+            <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-400 hidden sm:block"></i>
+          </button>
+
+          <!-- User Profile Dropdown Panel -->
+          <div id="user-profile-dropdown" class="hidden absolute right-0 mt-2 w-56 bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 z-50 py-1.5 transform origin-top-right transition-all">
+            <div class="px-4 py-2.5 border-b border-slate-100 dark:border-slate-800">
+              <div class="text-xs font-bold text-slate-900 dark:text-white">Alex Rivera</div>
+              <div class="text-[11px] text-slate-400 truncate">alex.rivera@dashpulse.io</div>
+            </div>
+            <div class="py-1 text-xs">
+              <a href="#settings" class="flex items-center gap-2.5 px-4 py-2 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                <i data-lucide="user" class="w-3.5 h-3.5 text-slate-400"></i> My Profile
+              </a>
+              <a href="#settings" class="flex items-center gap-2.5 px-4 py-2 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                <i data-lucide="sliders" class="w-3.5 h-3.5 text-slate-400"></i> Workspace Settings
+              </a>
+              <a href="#orders" class="flex items-center gap-2.5 px-4 py-2 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                <i data-lucide="credit-card" class="w-3.5 h-3.5 text-slate-400"></i> Billing & Plans
+              </a>
+              <a href="#help" class="flex items-center gap-2.5 px-4 py-2 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                <i data-lucide="help-circle" class="w-3.5 h-3.5 text-slate-400"></i> Help & Guides
+              </a>
+            </div>
+            <div class="pt-1 border-t border-slate-100 dark:border-slate-800">
+              <button id="btn-sign-out" type="button" class="w-full text-left flex items-center gap-2.5 px-4 py-2 text-xs font-medium text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors">
+                <i data-lucide="log-out" class="w-3.5 h-3.5"></i> Sign Out
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main View Dynamic Container -->
+    <main class="flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl w-full mx-auto" id="main-content-view">
+      <!-- Active Page Component Injected Here -->
+    </main>
+
+    <!-- Minimal Template Footer -->
+    <footer class="border-t border-slate-200/70 dark:border-slate-800/70 py-4 px-6 text-center sm:flex sm:justify-between sm:items-center text-xs text-slate-400">
+      <div>DashPulse Admin Dashboard Template • Built with Tailwind CSS</div>
+      <div class="mt-2 sm:mt-0 flex items-center justify-center gap-4">
+        <a href="#help" class="hover:underline">Documentation</a>
+        <a href="#settings" class="hover:underline">Privacy & Security</a>
+        <a href="#help" class="hover:underline">API Reference</a>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Command Palette Modal Mount Root -->
+  <div id="command-palette-root"></div>
+
+  <!-- Confirmation Modal Mount Root -->
+  <div id="confirm-modal-root"></div>
+
+  <!-- Application Scripts (Loaded in dependency order) -->
+  <script src="js/data.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/pages/dashboard.js"></script>
+  <script src="js/pages/analytics.js"></script>
+  <script src="js/pages/users.js"></script>
+  <script src="js/pages/userDetail.js"></script>
+  <script src="js/pages/orders.js"></script>
+  <script src="js/pages/reports.js"></script>
+  <script src="js/pages/settings.js"></script>
+  <script src="js/pages/help.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

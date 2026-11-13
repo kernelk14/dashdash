@@ -133,9 +133,16 @@ window.CommandPalette = (function () {
       const pages = [
         { label: "Dashboard Overview", desc: "KPI cards, revenue charts, recent activity", icon: "layout-dashboard", href: "#dashboard" },
         { label: "Analytics & Intelligence", desc: "Traffic metrics, cohort retention, regional market share", icon: "bar-chart-3", href: "#analytics" },
+        { label: "Kanban Task Board", desc: "Interactive sprint backlog, task stages, team assignees", icon: "trello", href: "#kanban" },
+        { label: "E-Commerce Products", desc: "Catalog listings, inventory levels, SKU management", icon: "box", href: "#products" },
+        { label: "Invoices & Billing", desc: "Client statements, printable invoices, payment records", icon: "file-text", href: "#invoices" },
+        { label: "Cloud File Manager", desc: "AWS S3 bucket storage quota, media assets, downloads", icon: "folder", href: "#files" },
+        { label: "Calendar & Schedule", desc: "Organization meetings, launches, webinars", icon: "calendar", href: "#calendar" },
         { label: "Users Management", desc: "Manage 20+ members, roles, statuses, and permissions", icon: "users", href: "#users" },
         { label: "Orders & Invoices", desc: "View real-time transactions, payment methods, CSV ledger", icon: "receipt", href: "#orders" },
-        { label: "Reports & Exports", desc: "Download executive audits, SLA metrics, CSV digests", icon: "file-text", href: "#reports" },
+        { label: "Reports & Exports", desc: "Download executive audits, SLA metrics, CSV digests", icon: "file-spreadsheet", href: "#reports" },
+        { label: "UI Component Kit", desc: "Buttons, alerts, badges, modals, form inputs", icon: "layout", href: "#components" },
+        { label: "Sign In Flow", desc: "Authentication sign in screen preview", icon: "log-in", href: "#auth-login" },
         { label: "System Settings", desc: "Profile details, preferences, security keys, appearance", icon: "settings", href: "#settings" },
         { label: "Help & Knowledge Base", desc: "Documentation, FAQs, shortcuts, and support tickets", icon: "help-circle", href: "#help" }
       ];
@@ -271,6 +278,31 @@ window.App = (function () {
         AnalyticsPage.render(container);
         break;
 
+      case "kanban":
+        document.title = "Kanban Board • DashPulse Admin";
+        KanbanPage.render(container);
+        break;
+
+      case "products":
+        document.title = "Products Catalog • DashPulse Admin";
+        EcommercePage.render(container);
+        break;
+
+      case "invoices":
+        document.title = "Invoices & Statements • DashPulse Admin";
+        InvoicesPage.render(container);
+        break;
+
+      case "files":
+        document.title = "Cloud Storage • DashPulse Admin";
+        FileManagerPage.render(container);
+        break;
+
+      case "calendar":
+        document.title = "Schedule Calendar • DashPulse Admin";
+        CalendarPage.render(container);
+        break;
+
       case "users":
         document.title = "Users • DashPulse Admin";
         UsersPage.render(container);
@@ -289,6 +321,31 @@ window.App = (function () {
       case "reports":
         document.title = "Reports & Exports • DashPulse Admin";
         ReportsPage.render(container);
+        break;
+
+      case "components":
+        document.title = "UI Component Kit • DashPulse Admin";
+        ComponentsShowcasePage.render(container);
+        break;
+
+      case "auth-login":
+        document.title = "Sign In • DashPulse Admin";
+        AuthShowcasePage.render(container, "login");
+        break;
+
+      case "auth-register":
+        document.title = "Sign Up • DashPulse Admin";
+        AuthShowcasePage.render(container, "register");
+        break;
+
+      case "auth-forgot":
+        document.title = "Password Recovery • DashPulse Admin";
+        AuthShowcasePage.render(container, "forgot");
+        break;
+
+      case "lock-screen":
+        document.title = "Session Locked • DashPulse Admin";
+        AuthShowcasePage.render(container, "lock");
         break;
 
       case "settings":
@@ -511,6 +568,9 @@ window.App = (function () {
     initNotificationsDropdown();
     initProfileDropdown();
     initKeyboardShortcuts();
+    if (window.ThemeCustomizer && window.ThemeCustomizer.init) {
+      window.ThemeCustomizer.init();
+    }
 
     // Global Search Bar Trigger
     const globalSearchTrigger = document.getElementById("global-search-trigger");
@@ -524,6 +584,20 @@ window.App = (function () {
     const collapseBtn = document.getElementById("btn-sidebar-collapse");
     if (collapseBtn) {
       collapseBtn.addEventListener("click", toggleSidebar);
+    }
+
+    // Fullscreen toggle button
+    const fullscreenBtn = document.getElementById("btn-toggle-fullscreen");
+    if (fullscreenBtn) {
+      fullscreenBtn.addEventListener("click", () => {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen().catch(() => {});
+          DashComponents.showToast("Entered fullscreen mode", "info", 1500);
+        } else {
+          if (document.exitFullscreen) document.exitFullscreen().catch(() => {});
+          DashComponents.showToast("Exited fullscreen mode", "info", 1500);
+        }
+      });
     }
 
     // Mobile Hamburger

@@ -6,6 +6,11 @@
   <title>DashPulse • Production SaaS Admin Dashboard</title>
   <meta name="description" content="Production-quality, accessible SaaS admin dashboard template built with HTML5, Tailwind CSS, Lucide icons, and Chart.js.">
 
+  <!-- Preconnect & Clean Typography: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -13,6 +18,10 @@
       darkMode: 'class',
       theme: {
         extend: {
+          fontFamily: {
+            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+            mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace']
+          },
           colors: {
             brand: {
               50: '#f0f9ff',
@@ -50,7 +59,7 @@
   <div id="mobile-sidebar-backdrop" class="fixed inset-0 z-40 bg-slate-900/60 backdrop-blur-sm hidden lg:hidden transition-opacity" aria-hidden="true"></div>
 
   <aside id="mobile-sidebar-drawer" class="fixed inset-y-0 left-0 z-50 w-72 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 p-5 flex flex-col justify-between transform -translate-x-full transition-transform duration-300 ease-in-out lg:hidden" aria-label="Mobile Navigation">
-    <div class="space-y-6">
+    <div class="space-y-6 overflow-y-auto">
       <!-- Mobile Drawer Brand Header -->
       <div class="flex items-center justify-between">
         <a href="#dashboard" class="flex items-center gap-3">
@@ -84,25 +93,59 @@
         </div>
 
         <div>
-          <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-3 mb-2">Management</div>
+          <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-3 mb-2">Apps & Modules</div>
           <div class="space-y-1">
-            <a href="#users" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors">
-              <i data-lucide="users" class="w-4 h-4"></i>
-              <span>Users</span>
+            <a href="#kanban" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors">
+              <i data-lucide="trello" class="w-4 h-4"></i>
+              <span>Kanban Tasks</span>
+            </a>
+            <a href="#products" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors">
+              <i data-lucide="box" class="w-4 h-4"></i>
+              <span>Products & Catalog</span>
+            </a>
+            <a href="#invoices" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors">
+              <i data-lucide="file-text" class="w-4 h-4"></i>
+              <span>Invoices</span>
             </a>
             <a href="#orders" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors">
               <i data-lucide="receipt" class="w-4 h-4"></i>
               <span>Orders & Billing</span>
             </a>
+            <a href="#files" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors">
+              <i data-lucide="folder" class="w-4 h-4"></i>
+              <span>Cloud Storage</span>
+            </a>
+            <a href="#calendar" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors">
+              <i data-lucide="calendar" class="w-4 h-4"></i>
+              <span>Calendar</span>
+            </a>
           </div>
         </div>
 
         <div>
-          <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-3 mb-2">Insights</div>
+          <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-3 mb-2">Management</div>
           <div class="space-y-1">
+            <a href="#users" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors">
+              <i data-lucide="users" class="w-4 h-4"></i>
+              <span>Users Directory</span>
+            </a>
             <a href="#reports" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors">
-              <i data-lucide="file-text" class="w-4 h-4"></i>
+              <i data-lucide="file-spreadsheet" class="w-4 h-4"></i>
               <span>Reports</span>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-3 mb-2">UI & Auth Showcase</div>
+          <div class="space-y-1">
+            <a href="#components" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors">
+              <i data-lucide="layout" class="w-4 h-4"></i>
+              <span>Component Kit</span>
+            </a>
+            <a href="#auth-login" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors">
+              <i data-lucide="log-in" class="w-4 h-4"></i>
+              <span>Sign In Flow</span>
             </a>
           </div>
         </div>
@@ -173,28 +216,63 @@
           </div>
         </div>
 
+        <!-- Apps & Modules Group -->
+        <div>
+          <div class="nav-section-title text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-3 mb-2">Apps & Modules</div>
+          <div class="space-y-1">
+            <a href="#kanban" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors" title="Kanban Tasks">
+              <i data-lucide="trello" class="w-4 h-4 flex-shrink-0"></i>
+              <span class="nav-link-text">Kanban Tasks</span>
+            </a>
+            <a href="#products" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors" title="Products">
+              <i data-lucide="box" class="w-4 h-4 flex-shrink-0"></i>
+              <span class="nav-link-text">Products & Catalog</span>
+            </a>
+            <a href="#invoices" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors" title="Invoices">
+              <i data-lucide="file-text" class="w-4 h-4 flex-shrink-0"></i>
+              <span class="nav-link-text">Invoices</span>
+            </a>
+            <a href="#orders" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors" title="Orders">
+              <i data-lucide="receipt" class="w-4 h-4 flex-shrink-0"></i>
+              <span class="nav-link-text">Orders & Billing</span>
+            </a>
+            <a href="#files" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors" title="Cloud Storage">
+              <i data-lucide="folder" class="w-4 h-4 flex-shrink-0"></i>
+              <span class="nav-link-text">Cloud Storage</span>
+            </a>
+            <a href="#calendar" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors" title="Calendar">
+              <i data-lucide="calendar" class="w-4 h-4 flex-shrink-0"></i>
+              <span class="nav-link-text">Calendar</span>
+            </a>
+          </div>
+        </div>
+
         <!-- Management Group -->
         <div>
           <div class="nav-section-title text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-3 mb-2">Management</div>
           <div class="space-y-1">
             <a href="#users" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors" title="Users">
               <i data-lucide="users" class="w-4 h-4 flex-shrink-0"></i>
-              <span class="nav-link-text">Users</span>
+              <span class="nav-link-text">Users Directory</span>
             </a>
-            <a href="#orders" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors" title="Orders">
-              <i data-lucide="receipt" class="w-4 h-4 flex-shrink-0"></i>
-              <span class="nav-link-text">Orders & Invoices</span>
+            <a href="#reports" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors" title="Reports">
+              <i data-lucide="file-spreadsheet" class="w-4 h-4 flex-shrink-0"></i>
+              <span class="nav-link-text">Reports & Exports</span>
             </a>
           </div>
         </div>
 
-        <!-- Insights Group -->
+        <!-- UI & Auth Group -->
         <div>
-          <div class="nav-section-title text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-3 mb-2">Insights</div>
+          <div class="nav-section-title text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-3 mb-2">UI & Auth Showcase</div>
           <div class="space-y-1">
-            <a href="#reports" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors" title="Reports">
-              <i data-lucide="file-text" class="w-4 h-4 flex-shrink-0"></i>
-              <span class="nav-link-text">Reports & Exports</span>
+            <a href="#components" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors" title="Components">
+              <i data-lucide="layout" class="w-4 h-4 flex-shrink-0"></i>
+              <span class="nav-link-text">Component Kit</span>
+            </a>
+            <a href="#auth-login" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors" title="Authentication">
+              <i data-lucide="log-in" class="w-4 h-4 flex-shrink-0"></i>
+              <span class="nav-link-text">Sign In Flow</span>
             </a>
           </div>
         </div>
@@ -246,13 +324,24 @@
         </div>
       </div>
 
-      <!-- Right: Global Search, Theme Toggle, Notification & Profile Menus -->
+      <!-- Right: Live Ticker, Global Search, Fullscreen, Theme Toggle, Notification & Profile Menus -->
       <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Live ARR Ticker -->
+        <span class="hidden xl:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+          ARR: $1.54M (+14%)
+        </span>
+
         <!-- Global Search Bar Button -->
         <button id="global-search-trigger" type="button" class="flex items-center gap-2 px-3 py-1.5 text-xs text-slate-400 bg-slate-100 dark:bg-slate-800/70 hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-200/60 dark:border-slate-700/60 rounded-xl transition-colors" title="Search (Ctrl+K)">
           <i data-lucide="search" class="w-3.5 h-3.5"></i>
           <span class="hidden md:inline-block">Search anything...</span>
           <kbd class="hidden md:inline-block font-mono text-[10px] text-slate-400 bg-white dark:bg-slate-900 px-1.5 py-0.5 rounded border border-slate-200 dark:border-slate-700 shadow-xs">Ctrl K</kbd>
+        </button>
+
+        <!-- Fullscreen Toggle Button -->
+        <button id="btn-toggle-fullscreen" type="button" class="p-2 text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors hidden sm:block" title="Toggle Fullscreen">
+          <i data-lucide="maximize" class="w-4 h-4"></i>
         </button>
 
         <!-- Light / Dark Theme Toggle Button -->
@@ -317,8 +406,8 @@
               <a href="#settings" class="flex items-center gap-2.5 px-4 py-2 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
                 <i data-lucide="sliders" class="w-3.5 h-3.5 text-slate-400"></i> Workspace Settings
               </a>
-              <a href="#orders" class="flex items-center gap-2.5 px-4 py-2 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
-                <i data-lucide="credit-card" class="w-3.5 h-3.5 text-slate-400"></i> Billing & Plans
+              <a href="#invoices" class="flex items-center gap-2.5 px-4 py-2 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                <i data-lucide="credit-card" class="w-3.5 h-3.5 text-slate-400"></i> Invoices & Statements
               </a>
               <a href="#help" class="flex items-center gap-2.5 px-4 py-2 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
                 <i data-lucide="help-circle" class="w-3.5 h-3.5 text-slate-400"></i> Help & Guides
@@ -343,6 +432,7 @@
     <footer class="border-t border-slate-200/70 dark:border-slate-800/70 py-4 px-6 text-center sm:flex sm:justify-between sm:items-center text-xs text-slate-400">
       <div>DashPulse Admin Dashboard Template • Built with Tailwind CSS</div>
       <div class="mt-2 sm:mt-0 flex items-center justify-center gap-4">
+        <a href="#components" class="hover:underline">UI Kit</a>
         <a href="#help" class="hover:underline">Documentation</a>
         <a href="#settings" class="hover:underline">Privacy & Security</a>
         <a href="#help" class="hover:underline">API Reference</a>
@@ -359,16 +449,27 @@
   <!-- Confirmation Modal Mount Root -->
   <div id="confirm-modal-root"></div>
 
+  <!-- Live Theme Customizer Mount Root -->
+  <div id="theme-customizer-root"></div>
+
   <!-- Application Scripts (Loaded in dependency order) -->
   <script src="js/data.js"></script>
   <script src="js/components.js"></script>
   <script src="js/charts.js"></script>
+  <script src="js/customizer.js"></script>
   <script src="js/pages/dashboard.js"></script>
   <script src="js/pages/analytics.js"></script>
+  <script src="js/pages/ecommerce.js"></script>
+  <script src="js/pages/kanban.js"></script>
+  <script src="js/pages/invoices.js"></script>
+  <script src="js/pages/fileManager.js"></script>
+  <script src="js/pages/calendar.js"></script>
   <script src="js/pages/users.js"></script>
   <script src="js/pages/userDetail.js"></script>
   <script src="js/pages/orders.js"></script>
   <script src="js/pages/reports.js"></script>
+  <script src="js/pages/componentsShowcase.js"></script>
+  <script src="js/pages/authShowcase.js"></script>
   <script src="js/pages/settings.js"></script>
   <script src="js/pages/help.js"></script>
   <script src="js/app.js"></script>

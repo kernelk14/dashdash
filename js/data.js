@@ -789,6 +789,375 @@ window.DashData = (function () {
     }
   ];
 
+  // E-Commerce Products Dataset
+  const initialProducts = [
+    {
+      id: "PRD-101",
+      name: "Cloud Edge Gateway Appliance",
+      sku: "GW-EDG-4000",
+      category: "Hardware",
+      price: 1499.00,
+      stock: 42,
+      status: "In Stock",
+      rating: 4.8,
+      sales: 320,
+      image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=150&auto=format&fit=crop&q=80"
+    },
+    {
+      id: "PRD-102",
+      name: "Enterprise Multi-Cluster License",
+      sku: "LIC-ENT-MLT",
+      category: "Software",
+      price: 4999.00,
+      stock: 999,
+      status: "In Stock",
+      rating: 4.9,
+      sales: 124,
+      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=150&auto=format&fit=crop&q=80"
+    },
+    {
+      id: "PRD-103",
+      name: "Developer Seat Subscription (Annual)",
+      sku: "SUB-DEV-YR",
+      category: "Subscription",
+      price: 360.00,
+      stock: 9999,
+      status: "In Stock",
+      rating: 4.7,
+      sales: 1850,
+      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=150&auto=format&fit=crop&q=80"
+    },
+    {
+      id: "PRD-104",
+      name: "Hardware Security Key FIDO2",
+      sku: "SEC-KEY-F2",
+      category: "Hardware",
+      price: 65.00,
+      stock: 8,
+      status: "Low Stock",
+      rating: 4.6,
+      sales: 840,
+      image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=150&auto=format&fit=crop&q=80"
+    },
+    {
+      id: "PRD-105",
+      name: "SOC-2 Continuous Audit Agent",
+      sku: "AUD-SOC2-AGT",
+      category: "Software",
+      price: 1200.00,
+      stock: 999,
+      status: "In Stock",
+      rating: 5.0,
+      sales: 95,
+      image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=150&auto=format&fit=crop&q=80"
+    },
+    {
+      id: "PRD-106",
+      name: "Dedicated Fiber Rack 10Gbps",
+      sku: "NET-FBR-10G",
+      category: "Infrastructure",
+      price: 2400.00,
+      stock: 0,
+      status: "Out of Stock",
+      rating: 4.5,
+      sales: 42,
+      image: "https://images.unsplash.com/photo-1551703599-6b3e8379aa8b?w=150&auto=format&fit=crop&q=80"
+    },
+    {
+      id: "PRD-107",
+      name: "AI Copilot Token Pool (10M)",
+      sku: "AI-TOK-10M",
+      category: "Subscription",
+      price: 490.00,
+      stock: 500,
+      status: "In Stock",
+      rating: 4.9,
+      sales: 610,
+      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=150&auto=format&fit=crop&q=80"
+    },
+    {
+      id: "PRD-108",
+      name: "Kubernetes Cluster Ingress Controller",
+      sku: "K8S-ING-PRO",
+      category: "Software",
+      price: 750.00,
+      stock: 999,
+      status: "In Stock",
+      rating: 4.7,
+      sales: 215,
+      image: "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=150&auto=format&fit=crop&q=80"
+    }
+  ];
+
+  // Kanban Tasks Dataset
+  const initialKanbanTasks = [
+    {
+      id: "TSK-01",
+      title: "Migrate Postgres clusters to Aurora Serverless v2",
+      desc: "Prepare schema snapshot, evaluate connection pooling with PgBouncer, and schedule zero-downtime failover window.",
+      column: "todo",
+      priority: "High",
+      assignee: "Gabriel Santos",
+      avatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&auto=format&fit=crop&q=80",
+      dueDate: "Nov 20",
+      tag: "Infra",
+      comments: 6
+    },
+    {
+      id: "TSK-02",
+      title: "Implement passkey WebAuthn authentication",
+      desc: "Enable biometric passkeys alongside standard authenticator app TOTP flows for SOC-2 Type II audit.",
+      column: "todo",
+      priority: "Medium",
+      assignee: "Oliver Wright",
+      avatar: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=150&auto=format&fit=crop&q=80",
+      dueDate: "Nov 24",
+      tag: "Security",
+      comments: 3
+    },
+    {
+      id: "TSK-03",
+      title: "Upgrade Stripe Billing API to v2024-10-28",
+      desc: "Handle asynchronous SEPA debit webhooks, multi-currency VAT calculations, and invoice PDF regeneration.",
+      column: "inprogress",
+      priority: "High",
+      assignee: "Ethan Chen",
+      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80",
+      dueDate: "Nov 16",
+      tag: "Billing",
+      comments: 11
+    },
+    {
+      id: "TSK-04",
+      title: "Design dynamic report PDF exporter",
+      desc: "Create pixel-perfect printable stylesheets and serverless headless Chromium renderer for financial exports.",
+      column: "inprogress",
+      priority: "Medium",
+      assignee: "Elena Rostova",
+      avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80",
+      dueDate: "Nov 18",
+      tag: "Design",
+      comments: 4
+    },
+    {
+      id: "TSK-05",
+      title: "Audit rate-limiting gateway for APAC endpoints",
+      desc: "Verify Redis sliding-window token bucket implementation across Tokyo and Singapore edge clusters.",
+      column: "review",
+      priority: "Low",
+      assignee: "Naomi Takahashi",
+      avatar: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=150&auto=format&fit=crop&q=80",
+      dueDate: "Nov 15",
+      tag: "API",
+      comments: 8
+    },
+    {
+      id: "TSK-06",
+      title: "Publish v3.4 OpenAPI documentation",
+      desc: "Generate interactive Swagger / Scalar documentation with code samples in TypeScript, Python, and Go.",
+      column: "done",
+      priority: "Medium",
+      assignee: "Marcus Vance",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
+      dueDate: "Nov 12",
+      tag: "Docs",
+      comments: 2
+    },
+    {
+      id: "TSK-07",
+      title: "Optimize Docker multi-stage build caching",
+      desc: "Reduced container image sizes by 64% using alpine bases and BuildKit cache mounts.",
+      column: "done",
+      priority: "High",
+      assignee: "Liam O'Connor",
+      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format&fit=crop&q=80",
+      dueDate: "Nov 10",
+      tag: "DevOps",
+      comments: 5
+    }
+  ];
+
+  // Calendar Events Dataset
+  const initialCalendarEvents = [
+    {
+      id: "EVT-01",
+      title: "Executive Q4 Budget & OKR Review",
+      date: "2026-11-16",
+      time: "10:00 AM - 11:30 AM",
+      category: "executive",
+      attendees: 8,
+      location: "Boardroom A / Zoom"
+    },
+    {
+      id: "EVT-02",
+      title: "Engineering Architecture Sync",
+      date: "2026-11-17",
+      time: "02:00 PM - 03:00 PM",
+      category: "engineering",
+      attendees: 14,
+      location: "Google Meet"
+    },
+    {
+      id: "EVT-03",
+      title: "Client Enterprise Demo: Acme Cloud",
+      date: "2026-11-19",
+      time: "11:00 AM - 12:00 PM",
+      category: "sales",
+      attendees: 5,
+      location: "Zoom Conference"
+    },
+    {
+      id: "EVT-04",
+      title: "SOC-2 Auditor Walkthrough Session",
+      date: "2026-11-21",
+      time: "09:00 AM - 11:00 AM",
+      category: "compliance",
+      attendees: 6,
+      location: "Security Room 402"
+    },
+    {
+      id: "EVT-05",
+      title: "Public API v3.5 Launch Webinar",
+      date: "2026-11-25",
+      time: "04:00 PM - 05:30 PM",
+      category: "webinar",
+      attendees: 180,
+      location: "YouTube Live Broadcast"
+    }
+  ];
+
+  // Invoices Dataset
+  const initialInvoices = [
+    {
+      id: "INV-2026-001",
+      client: "Sophia Martinez",
+      company: "Acme Cloud Inc.",
+      email: "sophia.martinez@acmecloud.com",
+      amount: 14850.00,
+      status: "Paid",
+      issueDate: "Nov 01, 2026",
+      dueDate: "Nov 15, 2026",
+      items: [
+        { desc: "Enterprise SaaS Tier (Annual Subscription)", qty: 1, price: 12000.00 },
+        { desc: "Dedicated High-Throughput VPC Peering", qty: 2, price: 1000.00 },
+        { desc: "24/7 Dedicated Support SLA", qty: 1, price: 850.00 }
+      ]
+    },
+    {
+      id: "INV-2026-002",
+      client: "Marcus Vance",
+      company: "QuantumFlow Labs",
+      email: "marcus.v@quantumflow.io",
+      amount: 3420.00,
+      status: "Paid",
+      issueDate: "Nov 04, 2026",
+      dueDate: "Nov 18, 2026",
+      items: [
+        { desc: "Pro Annual Team License (10 Seats)", qty: 1, price: 3000.00 },
+        { desc: "Custom Domain SSL Encryption", qty: 1, price: 420.00 }
+      ]
+    },
+    {
+      id: "INV-2026-003",
+      client: "Liam O'Connor",
+      company: "Celtic Cloud Networks",
+      email: "liam@celticcloud.ie",
+      amount: 6800.00,
+      status: "Pending",
+      issueDate: "Nov 08, 2026",
+      dueDate: "Nov 22, 2026",
+      items: [
+        { desc: "Multi-Region Cluster Redundancy Deployment", qty: 1, price: 6000.00 },
+        { desc: "Extended Monitoring Storage Retention", qty: 1, price: 800.00 }
+      ]
+    },
+    {
+      id: "INV-2026-004",
+      client: "Devon Brooks",
+      company: "Sentinel Data Trust",
+      email: "dbrooks@sentineldata.org",
+      amount: 2200.00,
+      status: "Overdue",
+      issueDate: "Oct 15, 2026",
+      dueDate: "Oct 30, 2026",
+      items: [
+        { desc: "Data Security Compliance Audit Pack", qty: 1, price: 2200.00 }
+      ]
+    },
+    {
+      id: "INV-2026-005",
+      client: "Oliver Wright",
+      company: "Oxford Metrics Group",
+      email: "oliver.w@oxfordmetrics.uk",
+      amount: 11400.00,
+      status: "Paid",
+      issueDate: "Nov 02, 2026",
+      dueDate: "Nov 16, 2026",
+      items: [
+        { desc: "Global Multi-Tenant Deployment License", qty: 1, price: 10000.00 },
+        { desc: "SOC-2 Type II Real-time Monitoring Node", qty: 1, price: 1400.00 }
+      ]
+    }
+  ];
+
+  // File Manager Dataset
+  const initialFiles = [
+    {
+      id: "FIL-01",
+      name: "Q4_Financial_Executive_Summary.pdf",
+      size: "4.8 MB",
+      type: "pdf",
+      modified: "Today at 09:30 AM",
+      owner: "Alex Rivera",
+      downloads: 48
+    },
+    {
+      id: "FIL-02",
+      name: "SOC2_Type_II_Compliance_Report_2026.pdf",
+      size: "18.2 MB",
+      type: "pdf",
+      modified: "Nov 11, 2026",
+      owner: "Oliver Wright",
+      downloads: 112
+    },
+    {
+      id: "FIL-03",
+      name: "Customer_Acquisition_Cohort_Data.xlsx",
+      size: "2.3 MB",
+      type: "sheet",
+      modified: "Nov 10, 2026",
+      owner: "Tariq Greenwood",
+      downloads: 24
+    },
+    {
+      id: "FIL-04",
+      name: "DashPulse_Design_System_Figma_Kit.zip",
+      size: "142.5 MB",
+      type: "archive",
+      modified: "Nov 08, 2026",
+      owner: "Elena Rostova",
+      downloads: 320
+    },
+    {
+      id: "FIL-05",
+      name: "Platform_Hero_Banner_Dark.png",
+      size: "3.1 MB",
+      type: "image",
+      modified: "Nov 07, 2026",
+      owner: "Elena Rostova",
+      downloads: 75
+    },
+    {
+      id: "FIL-06",
+      name: "Kubernetes_Helm_Values_Production.yaml",
+      size: "42 KB",
+      type: "code",
+      modified: "Nov 06, 2026",
+      owner: "Gabriel Santos",
+      downloads: 64
+    }
+  ];
+
   // Helper functions for state management and local persistence
   function loadFromStorage(key, fallback) {
     try {
@@ -814,6 +1183,11 @@ window.DashData = (function () {
   let notificationsStore = loadFromStorage('notifications', initialNotifications);
   let settingsStore = loadFromStorage('settings', defaultSettings);
   let reportsStore = loadFromStorage('reports', initialReports);
+  let productsStore = loadFromStorage('products', initialProducts);
+  let kanbanStore = loadFromStorage('kanban', initialKanbanTasks);
+  let calendarStore = loadFromStorage('calendar', initialCalendarEvents);
+  let invoicesStore = loadFromStorage('invoices', initialInvoices);
+  let filesStore = loadFromStorage('files', initialFiles);
 
   return {
     // Users API
@@ -891,6 +1265,129 @@ window.DashData = (function () {
       return null;
     },
 
+    // Products API
+    getProducts: () => [...productsStore],
+    getProductById: (id) => productsStore.find(p => p.id === id),
+    addProduct: (product) => {
+      const newProd = {
+        id: `PRD-${Math.floor(100 + Math.random() * 900)}`,
+        rating: 5.0,
+        sales: 0,
+        image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=150&auto=format&fit=crop&q=80",
+        ...product
+      };
+      productsStore.unshift(newProd);
+      saveToStorage('products', productsStore);
+      return newProd;
+    },
+    updateProduct: (id, fields) => {
+      const p = productsStore.find(item => item.id === id);
+      if (p) {
+        Object.assign(p, fields);
+        saveToStorage('products', productsStore);
+        return p;
+      }
+      return null;
+    },
+    deleteProduct: (id) => {
+      productsStore = productsStore.filter(p => p.id !== id);
+      saveToStorage('products', productsStore);
+      return true;
+    },
+
+    // Kanban API
+    getKanbanTasks: () => [...kanbanStore],
+    addKanbanTask: (task) => {
+      const newTask = {
+        id: `TSK-${String(kanbanStore.length + 1).padStart(2, '0')}`,
+        column: "todo",
+        comments: 0,
+        avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
+        assignee: "Alex Rivera",
+        ...task
+      };
+      kanbanStore.push(newTask);
+      saveToStorage('kanban', kanbanStore);
+      return newTask;
+    },
+    updateKanbanTaskStatus: (id, newColumn) => {
+      const task = kanbanStore.find(t => t.id === id);
+      if (task) {
+        task.column = newColumn;
+        saveToStorage('kanban', kanbanStore);
+        return task;
+      }
+      return null;
+    },
+    deleteKanbanTask: (id) => {
+      kanbanStore = kanbanStore.filter(t => t.id !== id);
+      saveToStorage('kanban', kanbanStore);
+      return true;
+    },
+
+    // Calendar API
+    getCalendarEvents: () => [...calendarStore],
+    addCalendarEvent: (event) => {
+      const newEvt = {
+        id: `EVT-${String(calendarStore.length + 1).padStart(2, '0')}`,
+        attendees: 1,
+        ...event
+      };
+      calendarStore.push(newEvt);
+      saveToStorage('calendar', calendarStore);
+      return newEvt;
+    },
+    deleteCalendarEvent: (id) => {
+      calendarStore = calendarStore.filter(e => e.id !== id);
+      saveToStorage('calendar', calendarStore);
+      return true;
+    },
+
+    // Invoices API
+    getInvoices: () => [...invoicesStore],
+    getInvoiceById: (id) => invoicesStore.find(i => i.id === id),
+    addInvoice: (inv) => {
+      const newInv = {
+        id: `INV-2026-${String(invoicesStore.length + 1).padStart(3, '0')}`,
+        status: "Pending",
+        issueDate: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+        items: [],
+        ...inv
+      };
+      invoicesStore.unshift(newInv);
+      saveToStorage('invoices', invoicesStore);
+      return newInv;
+    },
+    updateInvoiceStatus: (id, status) => {
+      const inv = invoicesStore.find(i => i.id === id);
+      if (inv) {
+        inv.status = status;
+        saveToStorage('invoices', invoicesStore);
+        return inv;
+      }
+      return null;
+    },
+
+    // Files API
+    getFiles: () => [...filesStore],
+    addFile: (file) => {
+      const newF = {
+        id: `FIL-${String(filesStore.length + 1).padStart(2, '0')}`,
+        downloads: 0,
+        owner: "Alex Rivera",
+        modified: "Just now",
+        ...file
+      };
+      filesStore.unshift(newF);
+      saveToStorage('files', filesStore);
+      return newF;
+    },
+    deleteFile: (id) => {
+      filesStore = filesStore.filter(f => f.id !== id);
+      saveToStorage('files', filesStore);
+      return true;
+    },
+
     // Activity Stream
     getActivities: () => [...activitiesStore],
     addActivity: (activity) => {
@@ -939,12 +1436,22 @@ window.DashData = (function () {
       localStorage.removeItem('dashpulse_notifications');
       localStorage.removeItem('dashpulse_settings');
       localStorage.removeItem('dashpulse_reports');
+      localStorage.removeItem('dashpulse_products');
+      localStorage.removeItem('dashpulse_kanban');
+      localStorage.removeItem('dashpulse_calendar');
+      localStorage.removeItem('dashpulse_invoices');
+      localStorage.removeItem('dashpulse_files');
       usersStore = [...initialUsers];
       ordersStore = [...initialOrders];
       activitiesStore = [...initialActivities];
       notificationsStore = [...initialNotifications];
       settingsStore = JSON.parse(JSON.stringify(defaultSettings));
       reportsStore = [...initialReports];
+      productsStore = [...initialProducts];
+      kanbanStore = [...initialKanbanTasks];
+      calendarStore = [...initialCalendarEvents];
+      invoicesStore = [...initialInvoices];
+      filesStore = [...initialFiles];
     }
   };
 })();

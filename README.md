@@ -2,120 +2,101 @@
 
 A complete, production-grade, highly responsive, full-featured SaaS admin dashboard template built with semantic **HTML5**, **Tailwind CSS**, **Vanilla JavaScript**, **Lucide Icons**, and **Chart.js**.
 
-Designed as a modular, extensible, commercial-grade frontend template with rich demo applications, live customizer, and full interactive states.
+Designed as a modular, extensible, commercial-grade frontend template with rich demo applications, live customizer, collapsible submenus, and full interactive states inspired by modern enterprise design systems like CoreUI.
 
 🔗 **GitHub Repository**: [https://github.com/kernelk14/dashdash](https://github.com/kernelk14/dashdash)
 
 ---
 
-## ✨ Features & Demo Applications
+## 🎨 Clean Typography & Design System
 
-### 1. Product Experience & Layout
-- **Live Demo Customizer Drawer**: Floating action gear button to test live color schemes (*Light*, *Dark*, *System*), primary accent palette (*Sky, Indigo, Emerald, Purple, Rose*), sidebar mode (*Full* vs *Compact Mini*), and a **Live Ticker Simulator** that streams incoming transactions in real-time.
-- **Collapsible Sidebar**: Full 260px desktop navigation with grouped sections (*Overview*, *Apps & Modules*, *Management*, *UI & Auth*, *System*) and a collapsible 72px mini icon mode with saved preference in `localStorage`.
-- **Responsive Mobile Navigation**: Smooth offcanvas mobile navigation drawer with backdrop blur overlay and swipe/escape dismissal.
-- **Top Bar & Dynamic Breadcrumbs**: Shows contextual route hierarchy (e.g. `Home / Users / Sophia Martinez`), live ARR badge (`$1.54M +14%`), fullscreen toggle (`F11`), and quick actions.
-- **Global Search & Command Palette (`Ctrl + K`)**: Fast command palette searching pages, users, transactions, and direct navigation.
-- **Theme Switcher**: Complete **Light** and **Dark** mode with instant toggle (`Ctrl + D`) and automatic persistence in `localStorage`. Automatically syncs Chart.js theme colors and contrast.
-- **Notifications Menu**: Dropdown with unread counter ping, category badges, and "Mark all as read" capability.
-- **User Profile Menu**: Dropdown menu with avatar, quick links, and confirmed sign-out flow.
+DashPulse uses the industry's cleanest, most legible font pairing configured directly for crisp visual hierarchy:
+- **Body & UI**: **[Inter](https://rsms.me/inter/)** (Weights 300–800) with tight tracking (`letter-spacing: -0.012em`), subpixel antialiasing, and OpenType disambiguation alternates (`"cv02", "cv03", "cv04", "cv11"`).
+- **Numbers & Code**: **[JetBrains Mono](https://www.jetbrains.com/lp/mono/)** with tabular numeric figures (`font-feature-settings: "tnum" 1`) guaranteeing vertical alignment across financial tables, KPI sparklines, and telemetry charts.
 
-### 2. Full-Featured Applications & Pages (Zero Dead Buttons)
+---
 
-#### Overview
-1. **Executive Dashboard (`#dashboard`)**:
-   - Interactive date-range selector (`7 Days`, `30 Days`, `Quarter`) dynamically updating KPIs and charts.
-   - 4 KPI metric cards with trend indicators (+14.2% Revenue, +8.1% Subscriptions, Average Order Value, Conversion Rate).
-   - Interactive Revenue Growth Line/Area Chart & Channel Breakdown Doughnut Chart.
-   - Real-time recent activity stream and transactions summary table.
-   - Quick export action generating CSV summary.
-2. **Analytics & Deep Metrics (`#analytics`)**:
-   - Timeframe filters (`7D`, `30D`, `90D`, `1Y`) and product category selectors.
-   - Dual-axis traffic session volume (bars) vs. pageviews (line) chart.
-   - "Compare with previous period" toggle switch.
-   - Product category revenue horizontal bar chart.
-   - Top regional markets breakdown with visual progress meters.
-   - Working CSV and JSON dataset export actions.
+## ✨ Full-Featured Live Demo Catalog
 
-#### Apps & Modules
-3. **Sprint Kanban Task Board (`#kanban`)**:
-   - 4 Agile columns (*To Do / Backlog*, *In Progress*, *Code Review*, *Completed*).
-   - Column task counter badges and fast "+" add buttons.
-   - Move task forward/backward between stages with instant feedback.
-   - Add Task modal with priority, assignee, due date, and tags.
-   - Delete task with safety confirmation.
-4. **E-Commerce & Products Catalog (`#products`)**:
-   - Inventory KPI metrics (Total SKUs, Inventory Value, Low Stock Alerts, Dispatched Units).
-   - Dual view mode: **Table View** and **Product Grid View**.
-   - Filter by category (*Hardware, Software, Subscription, Infrastructure*) and stock level.
-   - "Add New Product" modal with image preview and SKU generator.
-   - Edit product modal, delete confirmation, and CSV export.
-5. **Invoices & Statements (`#invoices`)**:
-   - Invoices ledger table with client info, due dates, amounts, and status badges (*Paid*, *Pending*, *Overdue*).
-   - Interactive Printable Invoice Modal with itemized breakdown, tax calculation, subtotal, and total due.
-   - "Mark as Paid" action that updates invoice status in place.
-   - "Print Invoice" action (`window.print()`).
-6. **Orders & Transactions (`#orders`)**:
-   - Filterable by Order ID, customer, payment method (Credit Card, ACH, Wire, PayPal), and status.
-   - Order detail modal showing line items, subtotal, tax, customer billing, and transaction references.
-   - "Issue Refund" action with safety confirmation modal.
-   - Working "Export CSV" triggering real browser file download.
-7. **Cloud File Storage Manager (`#files`)**:
-   - Storage usage visual quota bar (*42.8 GB / 100 GB used*).
-   - Filter by file category (*PDFs, Spreadsheets, Archives, Images, Code*).
-   - Simulated file upload modal with drag-and-drop zone.
-   - Download simulation and delete file action with confirmation.
-8. **Calendar & Schedule (`#calendar`)**:
-   - Monthly interactive calendar grid with weekday headers and day cell overflow.
-   - Previous Month, Next Month, and "Today" quick controls.
-   - Upcoming events sidebar with dates, times, and location tags.
-   - "+ Add Event" modal with date picker and validation.
+### 1. Navigation & Shell Layout
+- **Collapsible Sidebar Tree**: Grouped sections with expandable submenus and animated chevron indicators:
+  - **Overview**: Dashboard (`#dashboard` with "NEW" badge), Analytics (`#analytics`)
+  - **Theme**: Colors (`#colors`), Typography (`#typography`)
+  - **Components**:
+    - *Base*: Accordion (`#base-accordion`), Cards (`#base-cards`), Carousel (`#base-carousel`), Pagination (`#base-pagination`)
+    - *Buttons*: Standard Buttons (`#buttons`), Button Groups (`#button-groups`), Dropdowns (`#dropdowns`)
+    - *Forms*: Controls (`#forms`), Select (`#form-select`), Checks & Radios (`#form-checks`), Validation (`#form-validation`)
+    - *Charts*: Chart.js Gallery (`#charts`)
+    - *Icons*: Lucide Icons Directory (`#icons`)
+    - *Notifications*: Alerts (`#notifications-alerts`), Modals (`#notifications-modals`), Toasts (`#notifications-toasts`)
+    - *Widgets*: Widgets Collection (`#widgets` with "HOT" badge)
+  - **Apps & Modules**: Kanban (`#kanban`), Products (`#products`), Invoices (`#invoices`), Orders (`#orders`), Cloud Storage (`#files`), Calendar (`#calendar`), Users (`#users`), Reports (`#reports`)
+  - **Pages**: Authentication (`#auth-login`, `#auth-register`, `#auth-forgot`, `#lock-screen`), Error 404 (`#404`), Error 500 (`#error-500`)
+  - **System**: Settings (`#settings`), Help & Docs (`#help`)
+- **Desktop Mini-Mode**: Collapsible to a 72px icon rail with tooltip previews (`Ctrl + B`).
+- **Responsive Mobile Navigation**: Offcanvas drawer with backdrop blur and swipe/esc dismissal.
+- **Top Bar & Dynamic Breadcrumbs**: Contextual route hierarchy, live ARR ticker (`$1.54M +14%`), fullscreen toggle (`F11`), and unread notifications badge.
+- **Command Palette (`Ctrl + K`)**: Instant search covering all 38 template pages, users, and transactions.
+- **Theme Customizer Drawer**: Real-time mode toggle (Light / Dark / System), accent color switcher, and incoming transaction ticker simulator.
 
-#### Management
-9. **Users Directory (`#users`)**:
-   - Searchable by name, email, department in real-time.
-   - Filterable by Role (*Administrator, Editor, Developer, Member, Billing*) and Status (*Active, Pending, Suspended, Inactive*).
-   - Clickable column sorting with ascending/descending indicators.
-   - Configurable pagination (5, 10, 20 items per page).
-   - Row selection checkboxes & Select All.
-   - Bulk actions bar: Activate, Suspend, or Delete selected users with modal confirmation.
-   - "Add New User" validated modal form.
-   - In-place user editing and deletion flows.
-10. **User Details Profile (`#user-detail?id=...`)**:
-   - Profile summary with avatar, tier plan, lifetime spend, and account status badge.
-   - Tabbed layout: Overview & Editable Personal Details, Chronological Activity Audit Trail, and Role Permissions Matrix.
-   - Working Save Changes and Cancel buttons.
-   - Reset password modal link and Account Suspension toggle.
-11. **Reports & Exports (`#reports`)**:
-   - Six structured report cards: Financial MRR, Customer Cohort LTV, Transaction Audit, Infrastructure SLA, Security SOC-2, and Sales Funnel.
-   - Instant CSV & JSON download buttons for every report card.
-   - "Generate Custom Report" modal with progress animation and dynamic file download.
+### 2. Demo Pages & Components (Zero Dead Buttons)
 
-#### UI Kit & Auth Showcase
-12. **UI Component Kit & Styleguide (`#components`)**:
-   - Buttons showcase: Primary, Dark, Success, Danger, Warning, Outline, Ghost.
-   - Interactive live toast feedback triggers (Info, Success, Warning, Error).
-   - Badges & Pills with glowing pulsing indicator dots.
-   - Alerts & Inline notification callouts.
-   - Form inputs with leading icon prefixes, currency inputs, and toggle switches.
-13. **Authentication Flows Showcase (`#auth-login`, `#auth-register`, `#auth-forgot`, `#lock-screen`)**:
-   - **Sign In** screen with demo autofill button and credentials preview.
-   - **Sign Up / Register** screen with terms agreement.
-   - **Password Recovery** screen with email dispatch simulation.
-   - **Lock Screen** with user avatar and password unlock.
+#### Theme
+- **Colors (`#colors`)**: Contextual color swatches (Primary, Secondary, Success, Danger, Warning, Info, Light, Dark) with click-to-copy HEX values.
+- **Typography (`#typography`)**: Headings scale (H1–H6), body copy weights, inline text elements, blockquotes, and tabular numeric demonstrations.
 
-#### System
-14. **System & Workspace Settings (`#settings`)**:
-   - 5 structured tabs: Profile & Account, Preferences, Notification channels, Security & 2FA, and Appearance & Theme.
-   - Working password update form with password strength indicator.
-   - Active sessions list with "Revoke All Other Sessions".
-   - Theme mode selection (Light, Dark, System) and primary accent picker.
-   - Working Save Settings and Reset to Defaults behavior.
-15. **Help & Knowledge Base (`#help` & 404 handler)**:
-   - Searchable FAQ accordion.
-   - Keyboard shortcuts cheat sheet modal.
-   - "Submit Engineering Ticket" validated modal.
-   - Friendly 404 Error page for unknown routes with "Return to Dashboard" action.
+#### Base Components
+- **Accordion (`#base-accordion`)**: Smooth animated collapsible panels with semantic SVG icons.
+- **Cards (`#base-cards`)**: Content cards, stat cards with progress meters, image header cards, and action footers.
+- **Carousel (`#base-carousel`)**: Multi-slide image carousel with dot navigation, left/right triggers, and pause on hover.
+- **Pagination (`#base-pagination`)**: Paginated navigation bars, active page states, animated spinners, and striped progress bars.
+
+#### Buttons & Dropdowns
+- **Buttons (`#buttons`)**: Solid contextual buttons, subtle outline variants, sizes (sm, md, lg), and loading state spinners.
+- **Button Groups (`#button-groups`)**: Joined horizontal toolbars, editor formatting groups, and segmented range toggles.
+- **Dropdown Menus (`#dropdowns`)**: Standard dropdowns, split button dropdowns, right-aligned menus, and badge headers.
+
+#### Form Controls & Validation
+- **Controls (`#forms`)**: Text inputs, leading icon inputs, password visibility toggle, file upload dropzone, and live range sliders.
+- **Select (`#form-select`)**: Native select menus, size scales, and multi-select tags.
+- **Checks & Radios (`#form-checks`)**: Accessible checkboxes, radio groups, and iOS-style switches with active toast notifications.
+- **Validation (`#form-validation`)**: Interactive client-side validated form with real-time field error messaging and submission confirmation.
+
+#### Charts & Visualizations
+- **Charts Gallery (`#charts`)**: Six responsive, theme-synced Chart.js visualizations:
+  - Multi-Axis Line Chart
+  - Grouped Bar Chart
+  - Doughnut Platform Distribution Chart
+  - Radar Multivariate Skill Matrix
+  - Pie Cloud Compute Allocation Chart
+  - Polar Area Telemetry Variance Chart
+
+#### Icons Directory
+- **Lucide Icons Library (`#icons`)**: 100+ searchable SVG vector icons with category filters (Navigation, Commerce, Users, Files, Security, System, Arrows) and instant click-to-copy HTML tag markup.
+
+#### Notifications & Modals
+- **Alerts (`#notifications-alerts`)**: Dismissible contextual notification banners (Success, Info, Warning, Danger).
+- **Modals (`#notifications-modals`)**: Default dialog, destructive confirmation modal with callback execution, and large multi-column modal.
+- **Toasts (`#notifications-toasts`)**: Interactive floating toast notification dispatcher with auto-dismissal.
+
+#### Widgets Collection
+- **Widgets (`#widgets`)**: KPI stat cards with embedded canvas sparklines, cluster CPU and NVMe storage meters, user profile summary cards, and social network statistics.
+
+#### Core SaaS Applications
+- **Executive Dashboard (`#dashboard`)**: Revenue charts, Day/Month/Year traffic filters, KPI cards with sparklines, social telemetry cards, and active user table with country flags.
+- **Analytics & Intelligence (`#analytics`)**: Dual-axis session traffic vs pageviews, category bars, and regional market share meters.
+- **Kanban Board (`#kanban`)**: 4-stage sprint board with task progression, add task modal, and delete safety confirmation.
+- **Products Catalog (`#products`)**: Inventory table and grid views with search, category filtering, and modal CRUD.
+- **Invoices & Billing (`#invoices`)**: Invoice ledger with itemized printable modal invoice and "Mark as Paid" action.
+- **Orders & Transactions (`#orders`)**: Filterable, sortable transactions with refund confirmation and CSV export.
+- **Cloud Storage (`#files`)**: Storage quota meter, category filters, and simulated file upload modal.
+- **Schedule Calendar (`#calendar`)**: Monthly calendar grid with upcoming events sidebar and event creation.
+- **Users Management (`#users`)**: Paginated user table, sorting, multi-select bulk actions, and modal editing.
+- **User Detail Profile (`#user-detail?id=...`)**: Full profile summary, activity audit log, and role permissions matrix.
+- **Reports & Digests (`#reports`)**: 6 structured executive report cards with instant CSV/JSON exports and custom report generator.
+- **System Settings (`#settings`)**: 5 tabs (Profile, Preferences, Notifications, Security & 2FA, Appearance) with save/reset validation.
+- **Error 500 Page (`#error-500`)**: Server exception screen with search, exception trace dump, and retry gateway action.
+- **Error 404 Page (`#404`)**: Friendly not found layout with search and back button.
 
 ---
 
@@ -123,46 +104,55 @@ Designed as a modular, extensible, commercial-grade frontend template with rich 
 
 ```
 dashdash/
-├── index.html              # Main HTML entry point, semantic shell & script imports
-├── README.md               # Documentation and guides
-├── .gitignore              # Git ignore rules
+├── index.html                  # Main application shell with collapsible submenus & script tags
+├── README.md                   # Complete template guide & feature documentation
+├── .gitignore                  # Git ignore rules
 ├── css/
-│   └── styles.css          # Custom scrollbars, animations, shimmer skeletons, toasts
+│   └── styles.css              # Typography tokens, custom scrollbars, toast animation, skeletons
 └── js/
-    ├── app.js              # Hash router, theme manager, command palette, global listeners
-    ├── customizer.js       # Live Theme Customizer drawer & real-time ticker simulator
-    ├── data.js             # Realistic mock dataset (users, orders, products, kanban, invoices, files, calendar)
-    ├── components.js       # Toasts, confirmation modals, badges, breadcrumbs, empty states, CSV/JSON exporters
-    ├── charts.js           # Chart.js instances, color sync, and dark mode adaptation
+    ├── app.js                  # Hash router, submenu toggles, command palette, global handlers
+    ├── customizer.js           # Live Theme Customizer drawer & real-time ARR ticker simulator
+    ├── data.js                 # Unified mock data store (users, orders, products, kanban, etc.)
+    ├── components.js           # Toasts, modals, badges, breadcrumbs, empty states, exporters
+    ├── charts.js               # Theme-synced Chart.js charts & mini sparklines
     └── pages/
-        ├── dashboard.js    # Dashboard overview view controller
-        ├── analytics.js    # Analytics view controller
-        ├── kanban.js       # Sprint kanban task board controller
-        ├── ecommerce.js    # E-commerce products & inventory controller
-        ├── invoices.js     # Invoices & printable statements controller
-        ├── fileManager.js  # Cloud storage file manager controller
-        ├── calendar.js     # Events calendar & schedule controller
-        ├── users.js        # Users table, search, filters, sorting, bulk actions & modal CRUD
-        ├── userDetail.js   # User details profile, tabs, and editable form
-        ├── orders.js       # Orders table, filters, detail modal, CSV export
-        ├── reports.js      # Reports grid, category filters, custom report generator
-        ├── componentsShowcase.js # UI Component styleguide & playground
-        ├── authShowcase.js # Authentication pages showcase (Sign in, Register, Forgot, Lock)
-        ├── settings.js     # Settings tabs, forms, 2FA, password strength, appearance
-        └── help.js         # FAQ accordion, shortcuts modal, ticket modal, and 404 handler
+        ├── dashboard.js        # Overview dashboard with sparklines & traffic table
+        ├── analytics.js        # Analytics deep-dive & cohort charts
+        ├── ecommerce.js        # Products catalog & inventory management
+        ├── kanban.js           # Sprint kanban task board
+        ├── invoices.js         # Invoices ledger & printable invoice modal
+        ├── fileManager.js      # Cloud bucket storage manager
+        ├── calendar.js         # Monthly calendar & schedule manager
+        ├── users.js            # Users table, sorting, filters & bulk actions
+        ├── userDetail.js       # User details profile & audit log
+        ├── orders.js           # Orders table, detail modal & CSV export
+        ├── reports.js          # Reports grid & custom report generator
+        ├── demoTheme.js        # Colors & Typography showcase
+        ├── demoBase.js         # Accordion, Cards, Carousel, Pagination
+        ├── demoButtons.js      # Buttons, Button Groups, Dropdowns
+        ├── demoForms.js        # Controls, Select, Checks & Radios, Validation
+        ├── demoCharts.js       # Chart.js visual gallery (6 chart types)
+        ├── demoIcons.js        # Lucide vector icons directory with copy snippet
+        ├── demoNotifications.js# Alerts, Modals, Toasts
+        ├── demoWidgets.js      # KPI sparkline widgets & profile cards
+        ├── demoErrors.js       # Error 500 & 404 pages
+        ├── componentsShowcase.js # Unified UI kit playground
+        ├── authShowcase.js     # Auth screens (Login, Register, Forgot, Lock)
+        ├── settings.js         # Settings tabs & 2FA controls
+        └── help.js             # FAQ accordion, shortcuts & support modal
 ```
 
 ---
 
 ## 🚀 How to Run the Template
 
-### Option 1: Direct Browser Launch (Zero Installation)
+### Direct Browser Launch (Zero Installation)
 Double-click `index.html` or open it directly in Google Chrome, Microsoft Edge, Mozilla Firefox, or Safari:
 ```
 file:///path/to/dashdash/index.html
 ```
 
-### Option 2: Using Any Local Static Server
+### Using Any Local Static Server
 ```bash
 # Python 3:
 python -m http.server 8000
@@ -173,11 +163,12 @@ npx serve .
 
 ---
 
-## ⌨️ Keyboard Shortcuts
+## ⌨️ Global Keyboard Shortcuts
 
 | Shortcut | Action |
 | --- | --- |
 | `Ctrl + K` / `Cmd + K` | Open Command Palette / Global Search |
 | `Ctrl + D` | Toggle Light / Dark Mode |
 | `Ctrl + B` | Toggle Collapsible Sidebar |
-| `Esc` | Close any active modal dialog, customizer, or command palette |
+| `F11` | Toggle Fullscreen Mode |
+| `Esc` | Close any active modal dialog, customizer drawer, or command palette |

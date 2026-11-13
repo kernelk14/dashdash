@@ -1,201 +1,392 @@
 /**
  * DashPulse Admin Dashboard Template
- * Page: Dashboard Overview
+ * Page: Dashboard Overview (CoreUI Inspired Flagship Layout)
  */
 
 window.DashboardPage = (function () {
-  let currentPeriod = "30d";
+  let trafficTimeframe = "Month";
 
   function render(container) {
-    DashComponents.updateBreadcrumbs([{ label: "Dashboard", href: "#dashboard" }]);
+    DashComponents.updateBreadcrumbs([{ label: "Home", href: "#dashboard" }, { label: "Dashboard", href: "#dashboard" }]);
 
     container.innerHTML = `
       <div class="space-y-6">
-        <!-- Top Title & Controls Header -->
-        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-          <div>
-            <h1 class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">Executive Overview</h1>
-            <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Real-time performance metrics, subscriptions, and financial activity.</p>
-          </div>
-          <div class="flex flex-wrap items-center gap-3">
-            <!-- Date Range Selector -->
-            <div class="inline-flex items-center bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg p-1 shadow-sm text-xs font-medium">
-              <button type="button" data-period="7d" class="period-btn px-3 py-1.5 rounded-md transition-colors ${currentPeriod === '7d' ? 'bg-blue-50 text-blue-600 dark:bg-blue-950/60 dark:text-blue-400 font-semibold' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'}">7 Days</button>
-              <button type="button" data-period="30d" class="period-btn px-3 py-1.5 rounded-md transition-colors ${currentPeriod === '30d' ? 'bg-blue-50 text-blue-600 dark:bg-blue-950/60 dark:text-blue-400 font-semibold' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'}">30 Days</button>
-              <button type="button" data-period="90d" class="period-btn px-3 py-1.5 rounded-md transition-colors ${currentPeriod === '90d' ? 'bg-blue-50 text-blue-600 dark:bg-blue-950/60 dark:text-blue-400 font-semibold' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'}">Quarter</button>
-            </div>
-
-            <!-- Quick Action Buttons -->
-            <button id="btn-quick-export" type="button" class="inline-flex items-center gap-1.5 px-3 py-2 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-800 rounded-lg text-xs font-medium shadow-sm transition-colors">
-              <i data-lucide="download" class="w-3.5 h-3.5"></i>
-              Export Summary
-            </button>
-            <a href="#users" class="inline-flex items-center gap-1.5 px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-semibold shadow-sm transition-colors">
-              <i data-lucide="user-plus" class="w-3.5 h-3.5"></i>
-              Add User
-            </a>
-          </div>
-        </div>
-
-        <!-- KPI Metrics Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" id="kpi-grid">
-          <!-- KPI 1 -->
-          <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:shadow-md transition-shadow">
-            <div class="flex items-center justify-between text-slate-500 dark:text-slate-400 mb-2">
-              <span class="text-xs font-semibold uppercase tracking-wider">Total Revenue</span>
-              <div class="p-2 rounded-xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400">
-                <i data-lucide="dollar-sign" class="w-4 h-4"></i>
-              </div>
-            </div>
-            <div class="flex items-baseline justify-between mt-1">
-              <div class="text-2xl font-bold text-slate-900 dark:text-white" id="kpi-revenue">$128,430</div>
-              <span class="inline-flex items-center text-xs font-semibold text-emerald-600 dark:text-emerald-400">
-                <i data-lucide="trending-up" class="w-3.5 h-3.5 mr-0.5"></i>
-                +14.2%
-              </span>
-            </div>
-            <p class="text-xs text-slate-400 dark:text-slate-500 mt-2">vs. $112,450 previous period</p>
-          </div>
-
-          <!-- KPI 2 -->
-          <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:shadow-md transition-shadow">
-            <div class="flex items-center justify-between text-slate-500 dark:text-slate-400 mb-2">
-              <span class="text-xs font-semibold uppercase tracking-wider">Active Subscriptions</span>
-              <div class="p-2 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400">
-                <i data-lucide="users" class="w-4 h-4"></i>
-              </div>
-            </div>
-            <div class="flex items-baseline justify-between mt-1">
-              <div class="text-2xl font-bold text-slate-900 dark:text-white" id="kpi-subs">2,845</div>
-              <span class="inline-flex items-center text-xs font-semibold text-emerald-600 dark:text-emerald-400">
-                <i data-lucide="trending-up" class="w-3.5 h-3.5 mr-0.5"></i>
-                +8.1%
-              </span>
-            </div>
-            <p class="text-xs text-slate-400 dark:text-slate-500 mt-2">Net +214 new enterprise accounts</p>
-          </div>
-
-          <!-- KPI 3 -->
-          <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:shadow-md transition-shadow">
-            <div class="flex items-center justify-between text-slate-500 dark:text-slate-400 mb-2">
-              <span class="text-xs font-semibold uppercase tracking-wider">Average Order Value</span>
-              <div class="p-2 rounded-xl bg-purple-50 dark:bg-purple-950/60 text-purple-600 dark:text-purple-400">
-                <i data-lucide="shopping-cart" class="w-4 h-4"></i>
-              </div>
-            </div>
-            <div class="flex items-baseline justify-between mt-1">
-              <div class="text-2xl font-bold text-slate-900 dark:text-white" id="kpi-aov">$94.20</div>
-              <span class="inline-flex items-center text-xs font-semibold text-rose-600 dark:text-rose-400">
-                <i data-lucide="trending-down" class="w-3.5 h-3.5 mr-0.5"></i>
-                -2.4%
-              </span>
-            </div>
-            <p class="text-xs text-slate-400 dark:text-slate-500 mt-2">Down from $96.50 last cycle</p>
-          </div>
-
-          <!-- KPI 4 -->
-          <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:shadow-md transition-shadow">
-            <div class="flex items-center justify-between text-slate-500 dark:text-slate-400 mb-2">
-              <span class="text-xs font-semibold uppercase tracking-wider">Conversion Rate</span>
-              <div class="p-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400">
-                <i data-lucide="activity" class="w-4 h-4"></i>
-              </div>
-            </div>
-            <div class="flex items-baseline justify-between mt-1">
-              <div class="text-2xl font-bold text-slate-900 dark:text-white" id="kpi-cr">3.64%</div>
-              <span class="inline-flex items-center text-xs font-semibold text-emerald-600 dark:text-emerald-400">
-                <i data-lucide="trending-up" class="w-3.5 h-3.5 mr-0.5"></i>
-                +0.8%
-              </span>
-            </div>
-            <p class="text-xs text-slate-400 dark:text-slate-500 mt-2">Target benchmark: 3.50%</p>
-          </div>
-        </div>
-
-        <!-- Charts Grid (2 columns: 8/12 and 4/12) -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <!-- Main Trend Chart -->
-          <div class="lg:col-span-2 bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm">
-            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-6">
-              <div>
-                <h2 class="text-base font-semibold text-slate-900 dark:text-white">Revenue Growth & Projections</h2>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Net recurring revenue compared to prior benchmark</p>
-              </div>
-              <a href="#analytics" class="text-xs text-blue-600 hover:text-blue-700 dark:text-blue-400 font-medium inline-flex items-center gap-1">
-                Deep Analytics <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-              </a>
-            </div>
-            <div class="h-72 w-full">
-              <canvas id="dashboard-revenue-chart"></canvas>
-            </div>
-          </div>
-
-          <!-- Channel Share Chart -->
-          <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm flex flex-col justify-between">
+        <!-- Top 4 Signature Metric Widget Cards with Embedded Sparklines -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Card 1: Users -->
+          <div class="bg-blue-600 text-white rounded-2xl p-5 shadow-sm relative overflow-hidden flex flex-col justify-between">
             <div>
-              <div class="flex items-center justify-between mb-2">
-                <h2 class="text-base font-semibold text-slate-900 dark:text-white">Sales by Channel</h2>
-                <button type="button" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200" title="Channel breakdown info">
-                  <i data-lucide="help-circle" class="w-4 h-4"></i>
-                </button>
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold uppercase tracking-wider text-blue-100">Active Users</span>
+                <div class="relative">
+                  <button type="button" class="text-blue-100 hover:text-white p-1">
+                    <i data-lucide="more-vertical" class="w-4 h-4"></i>
+                  </button>
+                </div>
               </div>
-              <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Direct vs Enterprise sales volume</p>
-              <div class="h-56 w-full relative">
-                <canvas id="dashboard-channel-chart"></canvas>
+              <div class="flex items-baseline gap-2 mt-2">
+                <div class="text-3xl font-extrabold font-mono tracking-tight">26K</div>
+                <span class="text-xs font-semibold text-blue-100 flex items-center">
+                  <i data-lucide="arrow-down" class="w-3.5 h-3.5 mr-0.5"></i> -12.4%
+                </span>
               </div>
             </div>
-            <div class="pt-4 border-t border-slate-100 dark:border-slate-800 text-center text-xs text-slate-500">
-              Enterprise pipelines account for 46% of total ARR.
+            <!-- Sparkline Canvas -->
+            <div class="h-16 w-full mt-4 -mb-2 -mx-2">
+              <canvas id="sparkline-users"></canvas>
+            </div>
+          </div>
+
+          <!-- Card 2: Income -->
+          <div class="bg-indigo-600 text-white rounded-2xl p-5 shadow-sm relative overflow-hidden flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold uppercase tracking-wider text-indigo-100">Gross Income</span>
+                <div class="relative">
+                  <button type="button" class="text-indigo-100 hover:text-white p-1">
+                    <i data-lucide="more-vertical" class="w-4 h-4"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="flex items-baseline gap-2 mt-2">
+                <div class="text-3xl font-extrabold font-mono tracking-tight">$6,200</div>
+                <span class="text-xs font-semibold text-emerald-300 flex items-center">
+                  <i data-lucide="arrow-up" class="w-3.5 h-3.5 mr-0.5"></i> +40.9%
+                </span>
+              </div>
+            </div>
+            <!-- Sparkline Canvas -->
+            <div class="h-16 w-full mt-4 -mb-2 -mx-2">
+              <canvas id="sparkline-income"></canvas>
+            </div>
+          </div>
+
+          <!-- Card 3: Conversion Rate -->
+          <div class="bg-amber-500 text-white rounded-2xl p-5 shadow-sm relative overflow-hidden flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold uppercase tracking-wider text-amber-100">Conversion Rate</span>
+                <div class="relative">
+                  <button type="button" class="text-amber-100 hover:text-white p-1">
+                    <i data-lucide="more-vertical" class="w-4 h-4"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="flex items-baseline gap-2 mt-2">
+                <div class="text-3xl font-extrabold font-mono tracking-tight">2.49%</div>
+                <span class="text-xs font-semibold text-amber-100 flex items-center">
+                  <i data-lucide="arrow-up" class="w-3.5 h-3.5 mr-0.5"></i> +84.7%
+                </span>
+              </div>
+            </div>
+            <!-- Sparkline Canvas (Bar) -->
+            <div class="h-16 w-full mt-4 -mb-2 -mx-2">
+              <canvas id="sparkline-conversion"></canvas>
+            </div>
+          </div>
+
+          <!-- Card 4: Sessions -->
+          <div class="bg-rose-600 text-white rounded-2xl p-5 shadow-sm relative overflow-hidden flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold uppercase tracking-wider text-rose-100">Visitor Sessions</span>
+                <div class="relative">
+                  <button type="button" class="text-rose-100 hover:text-white p-1">
+                    <i data-lucide="more-vertical" class="w-4 h-4"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="flex items-baseline gap-2 mt-2">
+                <div class="text-3xl font-extrabold font-mono tracking-tight">44K</div>
+                <span class="text-xs font-semibold text-rose-200 flex items-center">
+                  <i data-lucide="arrow-down" class="w-3.5 h-3.5 mr-0.5"></i> -23.6%
+                </span>
+              </div>
+            </div>
+            <!-- Sparkline Canvas -->
+            <div class="h-16 w-full mt-4 -mb-2 -mx-2">
+              <canvas id="sparkline-sessions"></canvas>
             </div>
           </div>
         </div>
 
-        <!-- Lower Section: Recent Orders & Activity Stream -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <!-- Recent Orders Summary Table (2 cols) -->
-          <div class="lg:col-span-2 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm overflow-hidden">
-            <div class="p-6 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
-              <div>
-                <h2 class="text-base font-semibold text-slate-900 dark:text-white">Recent Transactions</h2>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Latest 5 orders processed across billing gateways</p>
-              </div>
-              <a href="#orders" class="text-xs font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-400 inline-flex items-center gap-1">
-                View All Orders <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
-              </a>
+        <!-- Main Traffic Chart Card (CoreUI Signature) -->
+        <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm overflow-hidden">
+          <div class="p-6 border-b border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div>
+              <h2 class="text-lg font-bold text-slate-900 dark:text-white tracking-tight">Global Traffic & Recurring Revenue</h2>
+              <p class="text-xs text-slate-500 mt-0.5" id="traffic-period-subtitle">January - December 2026</p>
             </div>
-            <div class="table-scroll-container">
-              <table class="w-full text-left text-xs">
-                <thead class="bg-slate-50/75 dark:bg-slate-800/50 text-slate-500 dark:text-slate-400 font-semibold border-b border-slate-100 dark:border-slate-800">
-                  <tr>
-                    <th class="p-3.5 pl-6">Order ID</th>
-                    <th class="p-3.5">Customer</th>
-                    <th class="p-3.5">Amount</th>
-                    <th class="p-3.5">Status</th>
-                    <th class="p-3.5 text-right pr-6">Action</th>
-                  </tr>
-                </thead>
-                <tbody class="divide-y divide-slate-100 dark:divide-slate-800/60" id="dashboard-orders-tbody">
-                  <!-- Injected dynamically -->
-                </tbody>
-              </table>
+
+            <div class="flex items-center gap-3">
+              <!-- Day / Month / Year Button Group -->
+              <div class="inline-flex rounded-xl border border-slate-200 dark:border-slate-800 p-0.5 bg-slate-50 dark:bg-slate-800 text-xs">
+                <button type="button" data-tf="Day" class="traffic-tf-btn px-3 py-1.5 rounded-lg font-medium transition-colors ${trafficTimeframe === 'Day' ? 'bg-white dark:bg-slate-900 text-blue-600 dark:text-blue-400 shadow-sm font-semibold' : 'text-slate-600 dark:text-slate-400'}">Day</button>
+                <button type="button" data-tf="Month" class="traffic-tf-btn px-3 py-1.5 rounded-lg font-medium transition-colors ${trafficTimeframe === 'Month' ? 'bg-white dark:bg-slate-900 text-blue-600 dark:text-blue-400 shadow-sm font-semibold' : 'text-slate-600 dark:text-slate-400'}">Month</button>
+                <button type="button" data-tf="Year" class="traffic-tf-btn px-3 py-1.5 rounded-lg font-medium transition-colors ${trafficTimeframe === 'Year' ? 'bg-white dark:bg-slate-900 text-blue-600 dark:text-blue-400 shadow-sm font-semibold' : 'text-slate-600 dark:text-slate-400'}">Year</button>
+              </div>
+
+              <button id="btn-traffic-download" type="button" class="p-2 text-slate-500 hover:text-slate-900 dark:hover:text-white rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 shadow-sm" title="Download Report">
+                <i data-lucide="download" class="w-4 h-4"></i>
+              </button>
             </div>
           </div>
 
-          <!-- Real-Time Activity Feed (1 col) -->
-          <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm p-6">
-            <div class="flex items-center justify-between mb-4">
-              <div>
-                <h2 class="text-base font-semibold text-slate-900 dark:text-white">Recent Activity</h2>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">System audit log and events</p>
+          <!-- Chart Area -->
+          <div class="p-6 h-80 w-full">
+            <canvas id="dashboard-revenue-chart"></canvas>
+          </div>
+
+          <!-- Bottom 5 Progress KPI Metric Meters (CoreUI Signature) -->
+          <div class="grid grid-cols-2 md:grid-cols-5 divide-x divide-y md:divide-y-0 divide-slate-100 dark:divide-slate-800 border-t border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/20 text-center text-xs">
+            <div class="p-4 space-y-2">
+              <span class="text-slate-500 font-medium">Visited</span>
+              <div class="font-bold text-slate-900 dark:text-white text-sm">29.703 Users (40%)</div>
+              <div class="w-full bg-slate-200 dark:bg-slate-700 h-1.5 rounded-full overflow-hidden">
+                <div class="bg-emerald-500 h-full rounded-full" style="width: 40%"></div>
               </div>
-              <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-50 text-emerald-600 dark:bg-emerald-950 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Live
-              </span>
             </div>
 
-            <div class="space-y-4" id="dashboard-activity-list">
-              <!-- Injected dynamically -->
+            <div class="p-4 space-y-2">
+              <span class="text-slate-500 font-medium">Unique</span>
+              <div class="font-bold text-slate-900 dark:text-white text-sm">24.093 Users (20%)</div>
+              <div class="w-full bg-slate-200 dark:bg-slate-700 h-1.5 rounded-full overflow-hidden">
+                <div class="bg-blue-500 h-full rounded-full" style="width: 20%"></div>
+              </div>
             </div>
+
+            <div class="p-4 space-y-2">
+              <span class="text-slate-500 font-medium">Pageviews</span>
+              <div class="font-bold text-slate-900 dark:text-white text-sm">78.706 Views (60%)</div>
+              <div class="w-full bg-slate-200 dark:bg-slate-700 h-1.5 rounded-full overflow-hidden">
+                <div class="bg-amber-500 h-full rounded-full" style="width: 60%"></div>
+              </div>
+            </div>
+
+            <div class="p-4 space-y-2">
+              <span class="text-slate-500 font-medium">New Users</span>
+              <div class="font-bold text-slate-900 dark:text-white text-sm">22.123 Users (80%)</div>
+              <div class="w-full bg-slate-200 dark:bg-slate-700 h-1.5 rounded-full overflow-hidden">
+                <div class="bg-rose-500 h-full rounded-full" style="width: 80%"></div>
+              </div>
+            </div>
+
+            <div class="p-4 space-y-2 col-span-2 md:col-span-1">
+              <span class="text-slate-500 font-medium">Bounce Rate</span>
+              <div class="font-bold text-slate-900 dark:text-white text-sm">40.15% (Average)</div>
+              <div class="w-full bg-slate-200 dark:bg-slate-700 h-1.5 rounded-full overflow-hidden">
+                <div class="bg-purple-500 h-full rounded-full" style="width: 40.15%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Social Media / Channel Traffic Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm p-5 flex items-center justify-between">
+            <div>
+              <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">GitHub Stargazers</span>
+              <div class="text-2xl font-black text-slate-900 dark:text-white font-mono mt-1">12,840</div>
+              <span class="text-xs text-emerald-600 font-semibold">+18% this month</span>
+            </div>
+            <div class="w-12 h-12 rounded-2xl bg-slate-900 text-white flex items-center justify-center dark:bg-slate-800">
+              <i data-lucide="github" class="w-6 h-6"></i>
+            </div>
+          </div>
+
+          <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm p-5 flex items-center justify-between">
+            <div>
+              <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Twitter / X</span>
+              <div class="text-2xl font-black text-slate-900 dark:text-white font-mono mt-1">48.2K</div>
+              <span class="text-xs text-blue-500 font-semibold">+1,420 followers</span>
+            </div>
+            <div class="w-12 h-12 rounded-2xl bg-sky-500 text-white flex items-center justify-center">
+              <i data-lucide="twitter" class="w-6 h-6"></i>
+            </div>
+          </div>
+
+          <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm p-5 flex items-center justify-between">
+            <div>
+              <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">LinkedIn Network</span>
+              <div class="text-2xl font-black text-slate-900 dark:text-white font-mono mt-1">18,500</div>
+              <span class="text-xs text-emerald-600 font-semibold">+412 connections</span>
+            </div>
+            <div class="w-12 h-12 rounded-2xl bg-blue-700 text-white flex items-center justify-center">
+              <i data-lucide="linkedin" class="w-6 h-6"></i>
+            </div>
+          </div>
+
+          <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm p-5 flex items-center justify-between">
+            <div>
+              <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Discord Community</span>
+              <div class="text-2xl font-black text-slate-900 dark:text-white font-mono mt-1">9,240</div>
+              <span class="text-xs text-indigo-500 font-semibold">1,820 online now</span>
+            </div>
+            <div class="w-12 h-12 rounded-2xl bg-indigo-600 text-white flex items-center justify-center">
+              <i data-lucide="message-square" class="w-6 h-6"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Detailed Traffic & Sales Table with Country Flags & Usage Bars (CoreUI Signature) -->
+        <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm overflow-hidden">
+          <div class="p-6 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+            <div>
+              <h2 class="text-base font-bold text-slate-900 dark:text-white">Traffic & Customer Sales Ledger</h2>
+              <p class="text-xs text-slate-500 mt-0.5">Real-time user sessions, geographic distribution, and payment methods</p>
+            </div>
+            <a href="#users" class="text-xs font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-400">View All Users &rarr;</a>
+          </div>
+
+          <div class="table-scroll-container">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-slate-50/75 dark:bg-slate-800/50 text-slate-500 font-semibold border-b border-slate-100 dark:border-slate-800">
+                <tr>
+                  <th class="p-3.5 pl-6">User Account</th>
+                  <th class="p-3.5">Country</th>
+                  <th class="p-3.5">Usage / Capacity</th>
+                  <th class="p-3.5">Payment Method</th>
+                  <th class="p-3.5 pr-6">Last Activity</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 dark:divide-slate-800/60">
+                <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+                  <td class="p-3.5 pl-6">
+                    <div class="flex items-center gap-3">
+                      <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80" alt="Sophia Martinez" class="w-8 h-8 rounded-full object-cover">
+                      <div>
+                        <div class="font-bold text-slate-900 dark:text-white">Sophia Martinez</div>
+                        <div class="text-[11px] text-slate-400">Registered: Mar 15, 2024</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="p-3.5">
+                    <div class="flex items-center gap-2">
+                      <span class="text-base">🇺🇸</span>
+                      <span class="font-medium text-slate-700 dark:text-slate-300">United States</span>
+                    </div>
+                  </td>
+                  <td class="p-3.5">
+                    <div class="w-48 space-y-1">
+                      <div class="flex justify-between text-[11px]">
+                        <span class="font-semibold text-slate-900 dark:text-white font-mono">50%</span>
+                        <span class="text-slate-400">Jun 11 - Jul 10</span>
+                      </div>
+                      <div class="w-full bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                        <div class="bg-emerald-500 h-full rounded-full" style="width: 50%"></div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="p-3.5">
+                    <div class="font-mono text-slate-700 dark:text-slate-300">Visa •••• 4242</div>
+                    <div class="text-[10px] text-slate-400">Paid Nov 12, 2026</div>
+                  </td>
+                  <td class="p-3.5 pr-6 text-slate-500">10 seconds ago</td>
+                </tr>
+
+                <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+                  <td class="p-3.5 pl-6">
+                    <div class="flex items-center gap-3">
+                      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" alt="Marcus Vance" class="w-8 h-8 rounded-full object-cover">
+                      <div>
+                        <div class="font-bold text-slate-900 dark:text-white">Marcus Vance</div>
+                        <div class="text-[11px] text-slate-400">Registered: Jun 22, 2024</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="p-3.5">
+                    <div class="flex items-center gap-2">
+                      <span class="text-base">🇩🇪</span>
+                      <span class="font-medium text-slate-700 dark:text-slate-300">Germany</span>
+                    </div>
+                  </td>
+                  <td class="p-3.5">
+                    <div class="w-48 space-y-1">
+                      <div class="flex justify-between text-[11px]">
+                        <span class="font-semibold text-slate-900 dark:text-white font-mono">10%</span>
+                        <span class="text-slate-400">Jun 11 - Jul 10</span>
+                      </div>
+                      <div class="w-full bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                        <div class="bg-blue-500 h-full rounded-full" style="width: 10%"></div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="p-3.5">
+                    <div class="font-mono text-slate-700 dark:text-slate-300">Mastercard •••• 8812</div>
+                    <div class="text-[10px] text-slate-400">Paid Nov 11, 2026</div>
+                  </td>
+                  <td class="p-3.5 pr-6 text-slate-500">5 minutes ago</td>
+                </tr>
+
+                <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+                  <td class="p-3.5 pl-6">
+                    <div class="flex items-center gap-3">
+                      <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&auto=format&fit=crop&q=80" alt="Karan Patel" class="w-8 h-8 rounded-full object-cover">
+                      <div>
+                        <div class="font-bold text-slate-900 dark:text-white">Karan Patel</div>
+                        <div class="text-[11px] text-slate-400">Registered: May 30, 2024</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="p-3.5">
+                    <div class="flex items-center gap-2">
+                      <span class="text-base">🇮🇳</span>
+                      <span class="font-medium text-slate-700 dark:text-slate-300">India</span>
+                    </div>
+                  </td>
+                  <td class="p-3.5">
+                    <div class="w-48 space-y-1">
+                      <div class="flex justify-between text-[11px]">
+                        <span class="font-semibold text-slate-900 dark:text-white font-mono">74%</span>
+                        <span class="text-slate-400">Jun 11 - Jul 10</span>
+                      </div>
+                      <div class="w-full bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                        <div class="bg-amber-500 h-full rounded-full" style="width: 74%"></div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="p-3.5">
+                    <div class="font-mono text-slate-700 dark:text-slate-300">Stripe ACH</div>
+                    <div class="text-[10px] text-slate-400">Paid Nov 06, 2026</div>
+                  </td>
+                  <td class="p-3.5 pr-6 text-slate-500">1 hour ago</td>
+                </tr>
+
+                <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+                  <td class="p-3.5 pl-6">
+                    <div class="flex items-center gap-3">
+                      <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80" alt="Elena Rostova" class="w-8 h-8 rounded-full object-cover">
+                      <div>
+                        <div class="font-bold text-slate-900 dark:text-white">Elena Rostova</div>
+                        <div class="text-[11px] text-slate-400">Registered: Apr 18, 2024</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="p-3.5">
+                    <div class="flex items-center gap-2">
+                      <span class="text-base">🇫🇷</span>
+                      <span class="font-medium text-slate-700 dark:text-slate-300">France</span>
+                    </div>
+                  </td>
+                  <td class="p-3.5">
+                    <div class="w-48 space-y-1">
+                      <div class="flex justify-between text-[11px]">
+                        <span class="font-semibold text-slate-900 dark:text-white font-mono">98%</span>
+                        <span class="text-slate-400">Jun 11 - Jul 10</span>
+                      </div>
+                      <div class="w-full bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                        <div class="bg-rose-500 h-full rounded-full" style="width: 98%"></div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="p-3.5">
+                    <div class="font-mono text-slate-700 dark:text-slate-300">PayPal Enterprise</div>
+                    <div class="text-[10px] text-slate-400">Paid Nov 11, 2026</div>
+                  </td>
+                  <td class="p-3.5 pr-6 text-slate-500">Last month</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
@@ -203,98 +394,39 @@ window.DashboardPage = (function () {
 
     if (window.lucide) window.lucide.createIcons({ root: container });
 
-    // Populate recent orders
-    populateRecentOrders();
-
-    // Populate activities
-    populateActivities();
-
-    // Render charts
+    // Render sparklines
     setTimeout(() => {
-      DashCharts.renderDashboardRevenueChart("dashboard-revenue-chart", currentPeriod);
-      DashCharts.renderDashboardChannelChart("dashboard-channel-chart");
+      DashCharts.renderSparkline("sparkline-users", "line", [26, 32, 28, 41, 38, 52, 48], "rgba(255,255,255,0.9)");
+      DashCharts.renderSparkline("sparkline-income", "line", [35, 41, 62, 42, 63, 75, 82], "rgba(255,255,255,0.9)");
+      DashCharts.renderSparkline("sparkline-conversion", "bar", [2.5, 3.1, 2.8, 3.4, 4.2, 3.8, 4.5], "rgba(255,255,255,0.85)");
+      DashCharts.renderSparkline("sparkline-sessions", "line", [42, 35, 55, 40, 68, 59, 72], "rgba(255,255,255,0.9)");
+      DashCharts.renderDashboardRevenueChart("dashboard-revenue-chart", "30d");
     }, 50);
 
-    // Bind Period Buttons
-    container.querySelectorAll(".period-btn").forEach(btn => {
+    // Bind Day / Month / Year timeframe buttons
+    container.querySelectorAll(".traffic-tf-btn").forEach(btn => {
       btn.addEventListener("click", () => {
-        const period = btn.dataset.period;
-        currentPeriod = period;
-        // Visual update
-        container.querySelectorAll(".period-btn").forEach(b => {
-          b.className = "period-btn px-3 py-1.5 rounded-md transition-colors text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white";
+        const tf = btn.dataset.tf;
+        trafficTimeframe = tf;
+        container.querySelectorAll(".traffic-tf-btn").forEach(b => {
+          b.className = "traffic-tf-btn px-3 py-1.5 rounded-lg font-medium transition-colors text-slate-600 dark:text-slate-400";
         });
-        btn.className = "period-btn px-3 py-1.5 rounded-md transition-colors bg-blue-50 text-blue-600 dark:bg-blue-950/60 dark:text-blue-400 font-semibold";
+        btn.className = "traffic-tf-btn px-3 py-1.5 rounded-lg font-medium transition-colors bg-white dark:bg-slate-900 text-blue-600 dark:text-blue-400 shadow-sm font-semibold";
 
-        // Update KPI values based on period
-        const revEl = document.getElementById("kpi-revenue");
-        if (period === "7d") revEl.textContent = "$38,420";
-        else if (period === "30d") revEl.textContent = "$128,430";
-        else revEl.textContent = "$412,850";
+        const sub = document.getElementById("traffic-period-subtitle");
+        if (sub) {
+          sub.textContent = tf === "Day" ? "Today (Hourly Aggregation)" : tf === "Month" ? "January - December 2026" : "2024 - 2026 Annual Overview";
+        }
 
-        DashCharts.renderDashboardRevenueChart("dashboard-revenue-chart", period);
-        DashComponents.showToast(`Dashboard refreshed for ${period.toUpperCase()}`, "info", 2000);
+        DashCharts.renderDashboardRevenueChart("dashboard-revenue-chart", tf === "Day" ? "7d" : tf === "Month" ? "30d" : "90d");
+        DashComponents.showToast(`Traffic filtered by ${tf}`, "info", 1500);
       });
     });
 
-    // Quick Export Summary
-    const exportBtn = document.getElementById("btn-quick-export");
-    if (exportBtn) {
-      exportBtn.addEventListener("click", () => {
-        const data = [
-          ["Metric", "Value", "Trend", "Period"],
-          ["Total Revenue", "$128,430", "+14.2%", currentPeriod],
-          ["Active Subscriptions", "2,845", "+8.1%", currentPeriod],
-          ["Average Order Value", "$94.20", "-2.4%", currentPeriod],
-          ["Conversion Rate", "3.64%", "+0.8%", currentPeriod]
-        ];
-        DashComponents.exportToCSV(`executive_summary_${currentPeriod}`, data[0], data.slice(1));
-      });
-    }
-  }
-
-  function populateRecentOrders() {
-    const tbody = document.getElementById("dashboard-orders-tbody");
-    if (!tbody) return;
-
-    const orders = DashData.getOrders().slice(0, 5);
-    tbody.innerHTML = orders.map(ord => `
-      <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
-        <td class="p-3.5 pl-6 font-mono font-medium text-slate-900 dark:text-white">${ord.id}</td>
-        <td class="p-3.5">
-          <div class="font-medium text-slate-900 dark:text-slate-100">${ord.customer}</div>
-          <div class="text-[11px] text-slate-400 dark:text-slate-500">${ord.company}</div>
-        </td>
-        <td class="p-3.5 font-semibold text-slate-900 dark:text-white">$${ord.amount.toLocaleString(undefined, { minimumFractionDigits: 2 })}</td>
-        <td class="p-3.5">${DashComponents.getOrderStatusBadge(ord.status)}</td>
-        <td class="p-3.5 text-right pr-6">
-          <a href="#orders" class="text-blue-600 hover:text-blue-700 dark:text-blue-400 font-medium">Details</a>
-        </td>
-      </tr>
-    `).join("");
-
-    if (window.lucide) window.lucide.createIcons({ root: tbody });
-  }
-
-  function populateActivities() {
-    const list = document.getElementById("dashboard-activity-list");
-    if (!list) return;
-
-    const activities = DashData.getActivities().slice(0, 5);
-    list.innerHTML = activities.map(act => `
-      <div class="flex items-start gap-3">
-        <div class="p-2 rounded-xl ${act.iconBg} flex-shrink-0 mt-0.5">
-          <i data-lucide="${act.icon}" class="w-4 h-4"></i>
-        </div>
-        <div class="flex-1 min-w-0">
-          <p class="text-xs font-semibold text-slate-900 dark:text-white leading-tight">${act.title}</p>
-          <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 line-clamp-2 leading-relaxed">${act.desc}</p>
-          <span class="text-[10px] text-slate-400 dark:text-slate-500 font-medium mt-1 block">${act.timestamp}</span>
-        </div>
-      </div>
-    `).join("");
-
-    if (window.lucide) window.lucide.createIcons({ root: list });
+    // Download action
+    document.getElementById("btn-traffic-download")?.addEventListener("click", () => {
+      DashComponents.exportToCSV("traffic_sales_report", ["Metric", "Value"], [["Active Users", "26K"], ["Gross Income", "$6,200"], ["Conversion", "2.49%"], ["Sessions", "44K"]]);
+    });
   }
 
   return { render };

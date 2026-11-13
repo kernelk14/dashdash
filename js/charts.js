@@ -347,6 +347,278 @@ window.DashCharts = (function () {
     });
   }
 
+  // Mini Sparkline Chart for KPI cards (CoreUI signature look)
+  function renderSparkline(canvasId, type = "line", data = [65, 59, 84, 84, 51, 55, 40], color = "#0284c7") {
+    destroyChart(canvasId);
+    const canvas = document.getElementById(canvasId);
+    if (!canvas || !window.Chart) return;
+
+    const ctx = canvas.getContext("2d");
+    const isDark = isDarkMode();
+
+    let dataset = {
+      data: data,
+      borderColor: color,
+      borderWidth: 2,
+      pointRadius: type === "bar" ? 0 : 2,
+      pointHoverRadius: 4,
+      pointBackgroundColor: color,
+      pointBorderColor: "#fff",
+      tension: 0.4
+    };
+
+    if (type === "bar") {
+      dataset.backgroundColor = color;
+      dataset.borderRadius = 3;
+    } else {
+      const gradient = ctx.createLinearGradient(0, 0, 0, 70);
+      gradient.addColorStop(0, color.includes("rgb") ? color : `${color}33`);
+      gradient.addColorStop(1, "rgba(255,255,255,0)");
+      dataset.backgroundColor = gradient;
+      dataset.fill = true;
+    }
+
+    instances[canvasId] = new Chart(ctx, {
+      type: type === "bar" ? "bar" : "line",
+      data: {
+        labels: data.map((_, i) => `D${i + 1}`),
+        datasets: [dataset]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            enabled: true,
+            displayColors: false,
+            padding: 6,
+            callbacks: {
+              label: (ctx) => ` ${ctx.parsed.y}`
+            }
+          }
+        },
+        scales: {
+          x: { display: false },
+          y: { display: false }
+        }
+      }
+    });
+  }
+
+  // Gallery Charts for Charts Showcase Page
+  function renderChartsPageLine(canvasId = "charts-demo-line") {
+    destroyChart("chartDemoLine");
+    const canvas = document.getElementById(canvasId);
+    if (!canvas || !window.Chart) return;
+    const colors = getThemeColors();
+    const ctx = canvas.getContext("2d");
+
+    instances["chartDemoLine"] = new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: ["January", "February", "March", "April", "May", "June", "July"],
+        datasets: [
+          {
+            label: "Monthly Active Users",
+            backgroundColor: colors.primaryLight,
+            borderColor: colors.primary,
+            pointHoverBackgroundColor: "#fff",
+            borderWidth: 2,
+            data: [65, 59, 80, 81, 56, 55, 40],
+            fill: true,
+            tension: 0.4
+          },
+          {
+            label: "Signups",
+            backgroundColor: "transparent",
+            borderColor: colors.secondary,
+            pointHoverBackgroundColor: "#fff",
+            borderWidth: 2,
+            borderDash: [5, 5],
+            data: [28, 48, 40, 19, 86, 27, 90],
+            tension: 0.4
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { labels: { color: colors.textColor } }
+        },
+        scales: {
+          x: { grid: { display: false }, ticks: { color: colors.textColor } },
+          y: { grid: { color: colors.gridColor }, ticks: { color: colors.textColor } }
+        }
+      }
+    });
+  }
+
+  function renderChartsPageBar(canvasId = "charts-demo-bar") {
+    destroyChart("chartDemoBar");
+    const canvas = document.getElementById(canvasId);
+    if (!canvas || !window.Chart) return;
+    const colors = getThemeColors();
+    const ctx = canvas.getContext("2d");
+
+    instances["chartDemoBar"] = new Chart(ctx, {
+      type: "bar",
+      data: {
+        labels: ["January", "February", "March", "April", "May", "June", "July"],
+        datasets: [
+          {
+            label: "Cloud Ingress",
+            backgroundColor: colors.primary,
+            data: [40, 20, 12, 39, 10, 40, 39],
+            borderRadius: 4
+          },
+          {
+            label: "Cloud Egress",
+            backgroundColor: colors.secondary,
+            data: [19, 12, 40, 29, 35, 20, 30],
+            borderRadius: 4
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { labels: { color: colors.textColor } } },
+        scales: {
+          x: { grid: { display: false }, ticks: { color: colors.textColor } },
+          y: { grid: { color: colors.gridColor }, ticks: { color: colors.textColor } }
+        }
+      }
+    });
+  }
+
+  function renderChartsPageDoughnut(canvasId = "charts-demo-doughnut") {
+    destroyChart("chartDemoDoughnut");
+    const canvas = document.getElementById(canvasId);
+    if (!canvas || !window.Chart) return;
+    const colors = getThemeColors();
+    const ctx = canvas.getContext("2d");
+
+    instances["chartDemoDoughnut"] = new Chart(ctx, {
+      type: "doughnut",
+      data: {
+        labels: ["Desktop", "Mobile", "Tablet"],
+        datasets: [{
+          data: [300, 50, 100],
+          backgroundColor: ["#0284c7", "#f59e0b", "#10b981"],
+          hoverBackgroundColor: ["#0369a1", "#d97706", "#059669"],
+          borderColor: isDarkMode() ? "#0f172a" : "#fff"
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { labels: { color: colors.textColor } } }
+      }
+    });
+  }
+
+  function renderChartsPageRadar(canvasId = "charts-demo-radar") {
+    destroyChart("chartDemoRadar");
+    const canvas = document.getElementById(canvasId);
+    if (!canvas || !window.Chart) return;
+    const colors = getThemeColors();
+    const ctx = canvas.getContext("2d");
+
+    instances["chartDemoRadar"] = new Chart(ctx, {
+      type: "radar",
+      data: {
+        labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
+        datasets: [
+          {
+            label: "Current Sprint",
+            backgroundColor: "rgba(2, 132, 199, 0.2)",
+            borderColor: "#0284c7",
+            pointBackgroundColor: "#0284c7",
+            pointBorderColor: "#fff",
+            data: [65, 59, 90, 81, 56, 55, 40]
+          },
+          {
+            label: "Previous Sprint",
+            backgroundColor: "rgba(99, 102, 241, 0.2)",
+            borderColor: "#6366f1",
+            pointBackgroundColor: "#6366f1",
+            pointBorderColor: "#fff",
+            data: [28, 48, 40, 19, 96, 27, 100]
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { labels: { color: colors.textColor } } },
+        scales: {
+          r: {
+            grid: { color: colors.gridColor },
+            angleLines: { color: colors.gridColor },
+            pointLabels: { color: colors.textColor }
+          }
+        }
+      }
+    });
+  }
+
+  function renderChartsPagePie(canvasId = "charts-demo-pie") {
+    destroyChart("chartDemoPie");
+    const canvas = document.getElementById(canvasId);
+    if (!canvas || !window.Chart) return;
+    const colors = getThemeColors();
+    const ctx = canvas.getContext("2d");
+
+    instances["chartDemoPie"] = new Chart(ctx, {
+      type: "pie",
+      data: {
+        labels: ["AWS US-East", "Google Cloud Frankfurt", "Azure Singapore"],
+        datasets: [{
+          data: [55, 30, 15],
+          backgroundColor: ["#0284c7", "#6366f1", "#10b981"],
+          borderColor: isDarkMode() ? "#0f172a" : "#fff"
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { labels: { color: colors.textColor } } }
+      }
+    });
+  }
+
+  function renderChartsPagePolarArea(canvasId = "charts-demo-polar") {
+    destroyChart("chartDemoPolar");
+    const canvas = document.getElementById(canvasId);
+    if (!canvas || !window.Chart) return;
+    const colors = getThemeColors();
+    const ctx = canvas.getContext("2d");
+
+    instances["chartDemoPolar"] = new Chart(ctx, {
+      type: "polarArea",
+      data: {
+        labels: ["Latency p50", "Latency p95", "Memory GC", "CPU Throttling", "Disk I/O"],
+        datasets: [{
+          data: [11, 16, 7, 3, 14],
+          backgroundColor: ["#0284c7", "#10b981", "#f59e0b", "#ef4444", "#8b5cf6"]
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { labels: { color: colors.textColor } } },
+        scales: {
+          r: {
+            grid: { color: colors.gridColor },
+            angleLines: { color: colors.gridColor }
+          }
+        }
+      }
+    });
+  }
+
   // Update theme of active charts without full reload
   function syncTheme() {
     // If charts exist on current view, re-render them
@@ -362,6 +634,20 @@ window.DashCharts = (function () {
     if (document.getElementById("analytics-category-chart")) {
       renderAnalyticsCategoryChart();
     }
+    if (document.getElementById("sparkline-users")) {
+      renderSparkline("sparkline-users", "line", [26, 32, 28, 41, 38, 52, 48], "#3b82f6");
+      renderSparkline("sparkline-income", "line", [35, 41, 62, 42, 63, 75, 82], "#10b981");
+      renderSparkline("sparkline-conversion", "bar", [2.5, 3.1, 2.8, 3.4, 4.2, 3.8, 4.5], "#f59e0b");
+      renderSparkline("sparkline-sessions", "line", [42, 35, 55, 40, 68, 59, 72], "#8b5cf6");
+    }
+    if (document.getElementById("charts-demo-line")) {
+      renderChartsPageLine();
+      renderChartsPageBar();
+      renderChartsPageDoughnut();
+      renderChartsPageRadar();
+      renderChartsPagePie();
+      renderChartsPagePolarArea();
+    }
   }
 
   return {
@@ -369,6 +655,13 @@ window.DashCharts = (function () {
     renderDashboardChannelChart,
     renderAnalyticsTrafficChart,
     renderAnalyticsCategoryChart,
+    renderSparkline,
+    renderChartsPageLine,
+    renderChartsPageBar,
+    renderChartsPageDoughnut,
+    renderChartsPageRadar,
+    renderChartsPagePie,
+    renderChartsPagePolarArea,
     syncTheme,
     destroyChart,
     destroyAllCharts

@@ -77,13 +77,17 @@
       </div>
 
       <!-- Navigation Links -->
-      <nav class="space-y-5">
+      <nav class="space-y-4">
+        <!-- Overview -->
         <div>
           <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-3 mb-2">Overview</div>
           <div class="space-y-1">
-            <a href="#dashboard" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors">
-              <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
-              <span>Dashboard</span>
+            <a href="#dashboard" class="nav-link-item flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors">
+              <div class="flex items-center gap-3">
+                <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
+                <span>Dashboard</span>
+              </div>
+              <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400">NEW</span>
             </a>
             <a href="#analytics" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors">
               <i data-lucide="bar-chart-3" class="w-4 h-4"></i>
@@ -92,6 +96,115 @@
           </div>
         </div>
 
+        <!-- Theme -->
+        <div>
+          <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-3 mb-2">Theme</div>
+          <div class="space-y-1">
+            <a href="#colors" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors">
+              <i data-lucide="palette" class="w-4 h-4"></i>
+              <span>Colors</span>
+            </a>
+            <a href="#typography" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors">
+              <i data-lucide="type" class="w-4 h-4"></i>
+              <span>Typography</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Components (Expandable) -->
+        <div>
+          <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-3 mb-2">Components</div>
+          <div class="space-y-1">
+            <!-- Base Dropdown -->
+            <div class="nav-dropdown-group">
+              <button type="button" class="nav-dropdown-toggle w-full flex items-center justify-between px-3.5 py-2 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors" data-target="mob-group-base">
+                <div class="flex items-center gap-3">
+                  <i data-lucide="layers" class="w-4 h-4"></i>
+                  <span>Base</span>
+                </div>
+                <i data-lucide="chevron-down" class="nav-chevron w-3.5 h-3.5 text-slate-400 transition-transform duration-200"></i>
+              </button>
+              <div id="mob-group-base" class="nav-group-items hidden pl-7 space-y-1 mt-1">
+                <a href="#base-accordion" class="nav-link-item flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40">Accordion</a>
+                <a href="#base-cards" class="nav-link-item flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40">Cards</a>
+                <a href="#base-carousel" class="nav-link-item flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40">Carousel</a>
+                <a href="#base-pagination" class="nav-link-item flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40">Pagination</a>
+              </div>
+            </div>
+
+            <!-- Buttons Dropdown -->
+            <div class="nav-dropdown-group">
+              <button type="button" class="nav-dropdown-toggle w-full flex items-center justify-between px-3.5 py-2 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors" data-target="mob-group-buttons">
+                <div class="flex items-center gap-3">
+                  <i data-lucide="circle-dot" class="w-4 h-4"></i>
+                  <span>Buttons</span>
+                </div>
+                <i data-lucide="chevron-down" class="nav-chevron w-3.5 h-3.5 text-slate-400 transition-transform duration-200"></i>
+              </button>
+              <div id="mob-group-buttons" class="nav-group-items hidden pl-7 space-y-1 mt-1">
+                <a href="#buttons" class="nav-link-item flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40">Buttons</a>
+                <a href="#button-groups" class="nav-link-item flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40">Button Groups</a>
+                <a href="#dropdowns" class="nav-link-item flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40">Dropdowns</a>
+              </div>
+            </div>
+
+            <!-- Forms Dropdown -->
+            <div class="nav-dropdown-group">
+              <button type="button" class="nav-dropdown-toggle w-full flex items-center justify-between px-3.5 py-2 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors" data-target="mob-group-forms">
+                <div class="flex items-center gap-3">
+                  <i data-lucide="check-square" class="w-4 h-4"></i>
+                  <span>Forms</span>
+                </div>
+                <i data-lucide="chevron-down" class="nav-chevron w-3.5 h-3.5 text-slate-400 transition-transform duration-200"></i>
+              </button>
+              <div id="mob-group-forms" class="nav-group-items hidden pl-7 space-y-1 mt-1">
+                <a href="#forms" class="nav-link-item flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40">Form Controls</a>
+                <a href="#form-select" class="nav-link-item flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40">Select</a>
+                <a href="#form-checks" class="nav-link-item flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40">Checks & Radios</a>
+                <a href="#form-validation" class="nav-link-item flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40">Validation</a>
+              </div>
+            </div>
+
+            <!-- Charts Link -->
+            <a href="#charts" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors">
+              <i data-lucide="pie-chart" class="w-4 h-4"></i>
+              <span>Charts</span>
+            </a>
+
+            <!-- Icons Link -->
+            <a href="#icons" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors">
+              <i data-lucide="feather" class="w-4 h-4"></i>
+              <span>Icons Library</span>
+            </a>
+
+            <!-- Notifications Dropdown -->
+            <div class="nav-dropdown-group">
+              <button type="button" class="nav-dropdown-toggle w-full flex items-center justify-between px-3.5 py-2 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors" data-target="mob-group-notif">
+                <div class="flex items-center gap-3">
+                  <i data-lucide="bell" class="w-4 h-4"></i>
+                  <span>Notifications</span>
+                </div>
+                <i data-lucide="chevron-down" class="nav-chevron w-3.5 h-3.5 text-slate-400 transition-transform duration-200"></i>
+              </button>
+              <div id="mob-group-notif" class="nav-group-items hidden pl-7 space-y-1 mt-1">
+                <a href="#notifications-alerts" class="nav-link-item flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40">Alerts</a>
+                <a href="#notifications-modals" class="nav-link-item flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40">Modals</a>
+                <a href="#notifications-toasts" class="nav-link-item flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40">Toasts</a>
+              </div>
+            </div>
+
+            <!-- Widgets Link -->
+            <a href="#widgets" class="nav-link-item flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors">
+              <div class="flex items-center gap-3">
+                <i data-lucide="calculator" class="w-4 h-4"></i>
+                <span>Widgets</span>
+              </div>
+              <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-amber-100 dark:bg-amber-900/40 text-amber-600 dark:text-amber-400">HOT</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Apps & Modules -->
         <div>
           <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-3 mb-2">Apps & Modules</div>
           <div class="space-y-1">
@@ -119,12 +232,6 @@
               <i data-lucide="calendar" class="w-4 h-4"></i>
               <span>Calendar</span>
             </a>
-          </div>
-        </div>
-
-        <div>
-          <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-3 mb-2">Management</div>
-          <div class="space-y-1">
             <a href="#users" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors">
               <i data-lucide="users" class="w-4 h-4"></i>
               <span>Users Directory</span>
@@ -136,20 +243,43 @@
           </div>
         </div>
 
+        <!-- Pages -->
         <div>
-          <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-3 mb-2">UI & Auth Showcase</div>
+          <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-3 mb-2">Pages</div>
           <div class="space-y-1">
-            <a href="#components" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors">
-              <i data-lucide="layout" class="w-4 h-4"></i>
-              <span>Component Kit</span>
-            </a>
-            <a href="#auth-login" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors">
-              <i data-lucide="log-in" class="w-4 h-4"></i>
-              <span>Sign In Flow</span>
-            </a>
+            <div class="nav-dropdown-group">
+              <button type="button" class="nav-dropdown-toggle w-full flex items-center justify-between px-3.5 py-2 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors" data-target="mob-group-auth">
+                <div class="flex items-center gap-3">
+                  <i data-lucide="lock" class="w-4 h-4"></i>
+                  <span>Authentication</span>
+                </div>
+                <i data-lucide="chevron-down" class="nav-chevron w-3.5 h-3.5 text-slate-400 transition-transform duration-200"></i>
+              </button>
+              <div id="mob-group-auth" class="nav-group-items hidden pl-7 space-y-1 mt-1">
+                <a href="#auth-login" class="nav-link-item flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40">Sign In</a>
+                <a href="#auth-register" class="nav-link-item flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40">Register</a>
+                <a href="#auth-forgot" class="nav-link-item flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40">Forgot Password</a>
+                <a href="#lock-screen" class="nav-link-item flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40">Lock Screen</a>
+              </div>
+            </div>
+
+            <div class="nav-dropdown-group">
+              <button type="button" class="nav-dropdown-toggle w-full flex items-center justify-between px-3.5 py-2 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors" data-target="mob-group-errors">
+                <div class="flex items-center gap-3">
+                  <i data-lucide="alert-octagon" class="w-4 h-4"></i>
+                  <span>Error Pages</span>
+                </div>
+                <i data-lucide="chevron-down" class="nav-chevron w-3.5 h-3.5 text-slate-400 transition-transform duration-200"></i>
+              </button>
+              <div id="mob-group-errors" class="nav-group-items hidden pl-7 space-y-1 mt-1">
+                <a href="#404" class="nav-link-item flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40">Error 404</a>
+                <a href="#error-500" class="nav-link-item flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40">Error 500</a>
+              </div>
+            </div>
           </div>
         </div>
 
+        <!-- System -->
         <div>
           <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-3 mb-2">System</div>
           <div class="space-y-1">
@@ -200,18 +330,129 @@
       </div>
 
       <!-- Navigation Menu Groups -->
-      <nav class="space-y-6" aria-label="Sidebar Menu">
+      <nav class="space-y-5" aria-label="Sidebar Menu">
         <!-- Overview Group -->
         <div>
           <div class="nav-section-title text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-3 mb-2">Overview</div>
           <div class="space-y-1">
-            <a href="#dashboard" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors" title="Dashboard">
-              <i data-lucide="layout-dashboard" class="w-4 h-4 flex-shrink-0"></i>
-              <span class="nav-link-text">Dashboard</span>
+            <a href="#dashboard" class="nav-link-item flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors" title="Dashboard">
+              <div class="flex items-center gap-3">
+                <i data-lucide="layout-dashboard" class="w-4 h-4 flex-shrink-0"></i>
+                <span class="nav-link-text">Dashboard</span>
+              </div>
+              <span class="nav-link-text px-1.5 py-0.5 rounded text-[10px] font-bold bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400">NEW</span>
             </a>
             <a href="#analytics" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors" title="Analytics">
               <i data-lucide="bar-chart-3" class="w-4 h-4 flex-shrink-0"></i>
               <span class="nav-link-text">Analytics</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Theme Group -->
+        <div>
+          <div class="nav-section-title text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-3 mb-2">Theme</div>
+          <div class="space-y-1">
+            <a href="#colors" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors" title="Colors">
+              <i data-lucide="palette" class="w-4 h-4 flex-shrink-0"></i>
+              <span class="nav-link-text">Colors</span>
+            </a>
+            <a href="#typography" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors" title="Typography">
+              <i data-lucide="type" class="w-4 h-4 flex-shrink-0"></i>
+              <span class="nav-link-text">Typography</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Components Group (Collapsible CoreUI Style) -->
+        <div>
+          <div class="nav-section-title text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-3 mb-2">Components</div>
+          <div class="space-y-1">
+            <!-- Base Dropdown -->
+            <div class="nav-dropdown-group">
+              <button type="button" class="nav-dropdown-toggle w-full flex items-center justify-between px-3.5 py-2 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors" data-target="group-base" title="Base Components">
+                <div class="flex items-center gap-3">
+                  <i data-lucide="layers" class="w-4 h-4 flex-shrink-0"></i>
+                  <span class="nav-link-text">Base</span>
+                </div>
+                <i data-lucide="chevron-down" class="nav-chevron w-3.5 h-3.5 text-slate-400 transition-transform duration-200"></i>
+              </button>
+              <div id="group-base" class="nav-group-items hidden pl-7 space-y-1 mt-1">
+                <a href="#base-accordion" class="nav-link-item flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40">Accordion</a>
+                <a href="#base-cards" class="nav-link-item flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40">Cards</a>
+                <a href="#base-carousel" class="nav-link-item flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40">Carousel</a>
+                <a href="#base-pagination" class="nav-link-item flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40">Pagination</a>
+              </div>
+            </div>
+
+            <!-- Buttons Dropdown -->
+            <div class="nav-dropdown-group">
+              <button type="button" class="nav-dropdown-toggle w-full flex items-center justify-between px-3.5 py-2 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors" data-target="group-buttons" title="Buttons">
+                <div class="flex items-center gap-3">
+                  <i data-lucide="circle-dot" class="w-4 h-4 flex-shrink-0"></i>
+                  <span class="nav-link-text">Buttons</span>
+                </div>
+                <i data-lucide="chevron-down" class="nav-chevron w-3.5 h-3.5 text-slate-400 transition-transform duration-200"></i>
+              </button>
+              <div id="group-buttons" class="nav-group-items hidden pl-7 space-y-1 mt-1">
+                <a href="#buttons" class="nav-link-item flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40">Buttons</a>
+                <a href="#button-groups" class="nav-link-item flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40">Button Groups</a>
+                <a href="#dropdowns" class="nav-link-item flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40">Dropdowns</a>
+              </div>
+            </div>
+
+            <!-- Forms Dropdown -->
+            <div class="nav-dropdown-group">
+              <button type="button" class="nav-dropdown-toggle w-full flex items-center justify-between px-3.5 py-2 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors" data-target="group-forms" title="Forms">
+                <div class="flex items-center gap-3">
+                  <i data-lucide="check-square" class="w-4 h-4 flex-shrink-0"></i>
+                  <span class="nav-link-text">Forms</span>
+                </div>
+                <i data-lucide="chevron-down" class="nav-chevron w-3.5 h-3.5 text-slate-400 transition-transform duration-200"></i>
+              </button>
+              <div id="group-forms" class="nav-group-items hidden pl-7 space-y-1 mt-1">
+                <a href="#forms" class="nav-link-item flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40">Form Controls</a>
+                <a href="#form-select" class="nav-link-item flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40">Select</a>
+                <a href="#form-checks" class="nav-link-item flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40">Checks & Radios</a>
+                <a href="#form-validation" class="nav-link-item flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40">Validation</a>
+              </div>
+            </div>
+
+            <!-- Charts Link -->
+            <a href="#charts" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors" title="Charts Gallery">
+              <i data-lucide="pie-chart" class="w-4 h-4 flex-shrink-0"></i>
+              <span class="nav-link-text">Charts</span>
+            </a>
+
+            <!-- Icons Link -->
+            <a href="#icons" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors" title="Icons Directory">
+              <i data-lucide="feather" class="w-4 h-4 flex-shrink-0"></i>
+              <span class="nav-link-text">Icons Library</span>
+            </a>
+
+            <!-- Notifications Dropdown -->
+            <div class="nav-dropdown-group">
+              <button type="button" class="nav-dropdown-toggle w-full flex items-center justify-between px-3.5 py-2 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors" data-target="group-notif" title="Notifications">
+                <div class="flex items-center gap-3">
+                  <i data-lucide="bell" class="w-4 h-4 flex-shrink-0"></i>
+                  <span class="nav-link-text">Notifications</span>
+                </div>
+                <i data-lucide="chevron-down" class="nav-chevron w-3.5 h-3.5 text-slate-400 transition-transform duration-200"></i>
+              </button>
+              <div id="group-notif" class="nav-group-items hidden pl-7 space-y-1 mt-1">
+                <a href="#notifications-alerts" class="nav-link-item flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40">Alerts</a>
+                <a href="#notifications-modals" class="nav-link-item flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40">Modals</a>
+                <a href="#notifications-toasts" class="nav-link-item flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40">Toasts</a>
+              </div>
+            </div>
+
+            <!-- Widgets Link -->
+            <a href="#widgets" class="nav-link-item flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors" title="Widgets Collection">
+              <div class="flex items-center gap-3">
+                <i data-lucide="calculator" class="w-4 h-4 flex-shrink-0"></i>
+                <span class="nav-link-text">Widgets</span>
+              </div>
+              <span class="nav-link-text px-1.5 py-0.5 rounded text-[10px] font-bold bg-amber-100 dark:bg-amber-900/40 text-amber-600 dark:text-amber-400">HOT</span>
             </a>
           </div>
         </div>
@@ -244,13 +485,6 @@
               <i data-lucide="calendar" class="w-4 h-4 flex-shrink-0"></i>
               <span class="nav-link-text">Calendar</span>
             </a>
-          </div>
-        </div>
-
-        <!-- Management Group -->
-        <div>
-          <div class="nav-section-title text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-3 mb-2">Management</div>
-          <div class="space-y-1">
             <a href="#users" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors" title="Users">
               <i data-lucide="users" class="w-4 h-4 flex-shrink-0"></i>
               <span class="nav-link-text">Users Directory</span>
@@ -262,18 +496,39 @@
           </div>
         </div>
 
-        <!-- UI & Auth Group -->
+        <!-- Pages Group (Collapsible) -->
         <div>
-          <div class="nav-section-title text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-3 mb-2">UI & Auth Showcase</div>
+          <div class="nav-section-title text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-3 mb-2">Pages</div>
           <div class="space-y-1">
-            <a href="#components" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors" title="Components">
-              <i data-lucide="layout" class="w-4 h-4 flex-shrink-0"></i>
-              <span class="nav-link-text">Component Kit</span>
-            </a>
-            <a href="#auth-login" class="nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors" title="Authentication">
-              <i data-lucide="log-in" class="w-4 h-4 flex-shrink-0"></i>
-              <span class="nav-link-text">Sign In Flow</span>
-            </a>
+            <div class="nav-dropdown-group">
+              <button type="button" class="nav-dropdown-toggle w-full flex items-center justify-between px-3.5 py-2 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors" data-target="group-auth" title="Authentication">
+                <div class="flex items-center gap-3">
+                  <i data-lucide="lock" class="w-4 h-4 flex-shrink-0"></i>
+                  <span class="nav-link-text">Authentication</span>
+                </div>
+                <i data-lucide="chevron-down" class="nav-chevron w-3.5 h-3.5 text-slate-400 transition-transform duration-200"></i>
+              </button>
+              <div id="group-auth" class="nav-group-items hidden pl-7 space-y-1 mt-1">
+                <a href="#auth-login" class="nav-link-item flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40">Sign In</a>
+                <a href="#auth-register" class="nav-link-item flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40">Register</a>
+                <a href="#auth-forgot" class="nav-link-item flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40">Forgot Password</a>
+                <a href="#lock-screen" class="nav-link-item flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40">Lock Screen</a>
+              </div>
+            </div>
+
+            <div class="nav-dropdown-group">
+              <button type="button" class="nav-dropdown-toggle w-full flex items-center justify-between px-3.5 py-2 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors" data-target="group-errors" title="Error Pages">
+                <div class="flex items-center gap-3">
+                  <i data-lucide="alert-octagon" class="w-4 h-4 flex-shrink-0"></i>
+                  <span class="nav-link-text">Error Pages</span>
+                </div>
+                <i data-lucide="chevron-down" class="nav-chevron w-3.5 h-3.5 text-slate-400 transition-transform duration-200"></i>
+              </button>
+              <div id="group-errors" class="nav-group-items hidden pl-7 space-y-1 mt-1">
+                <a href="#404" class="nav-link-item flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40">Error 404</a>
+                <a href="#error-500" class="nav-link-item flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40">Error 500</a>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -470,6 +725,15 @@
   <script src="js/pages/reports.js"></script>
   <script src="js/pages/componentsShowcase.js"></script>
   <script src="js/pages/authShowcase.js"></script>
+  <script src="js/pages/demoTheme.js"></script>
+  <script src="js/pages/demoBase.js"></script>
+  <script src="js/pages/demoButtons.js"></script>
+  <script src="js/pages/demoForms.js"></script>
+  <script src="js/pages/demoCharts.js"></script>
+  <script src="js/pages/demoIcons.js"></script>
+  <script src="js/pages/demoNotifications.js"></script>
+  <script src="js/pages/demoWidgets.js"></script>
+  <script src="js/pages/demoErrors.js"></script>
   <script src="js/pages/settings.js"></script>
   <script src="js/pages/help.js"></script>
   <script src="js/app.js"></script>

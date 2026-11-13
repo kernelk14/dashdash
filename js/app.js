@@ -133,6 +133,25 @@ window.CommandPalette = (function () {
       const pages = [
         { label: "Dashboard Overview", desc: "KPI cards, revenue charts, recent activity", icon: "layout-dashboard", href: "#dashboard" },
         { label: "Analytics & Intelligence", desc: "Traffic metrics, cohort retention, regional market share", icon: "bar-chart-3", href: "#analytics" },
+        { label: "Theme Colors", desc: "Contextual color palette, contrast ratios, copy HEX codes", icon: "palette", href: "#colors" },
+        { label: "Typography System", desc: "Font scale, Inter weights, monospace tabular figures", icon: "type", href: "#typography" },
+        { label: "Accordion & Collapse", desc: "Vertically collapsing responsive accordion panels", icon: "layers", href: "#base-accordion" },
+        { label: "Cards & Deck Layouts", desc: "Bordered cards, media headers, action footers", icon: "layers", href: "#base-cards" },
+        { label: "Carousel Slider", desc: "Image slider with dots, controls, and captions", icon: "layers", href: "#base-carousel" },
+        { label: "Pagination & Badges", desc: "Page navigation controls and status pills", icon: "layers", href: "#base-pagination" },
+        { label: "Buttons Showcase", desc: "Solid, outline, sizing, and icon buttons", icon: "circle-dot", href: "#buttons" },
+        { label: "Button Groups", desc: "Toolbar and segmented view toggle groups", icon: "circle-dot", href: "#button-groups" },
+        { label: "Dropdown Menus", desc: "Standard, split, and segmented action dropdowns", icon: "circle-dot", href: "#dropdowns" },
+        { label: "Form Controls", desc: "Text inputs, textarea, file upload, range slider", icon: "check-square", href: "#forms" },
+        { label: "Form Select", desc: "Native select, multi-select, and size scales", icon: "check-square", href: "#form-select" },
+        { label: "Checks & Radios", desc: "Checkboxes, radio groups, and iOS switches", icon: "check-square", href: "#form-checks" },
+        { label: "Form Validation", desc: "Interactive client-side validation form with live error states", icon: "check-square", href: "#form-validation" },
+        { label: "Chart.js Visualizations", desc: "Line, Bar, Doughnut, Radar, Pie, Polar Area charts", icon: "pie-chart", href: "#charts" },
+        { label: "Lucide Icon Directory", desc: "Browse and copy 100+ SVG vector icons", icon: "feather", href: "#icons" },
+        { label: "Alert Banners", desc: "Dismissible contextual notification banners", icon: "bell", href: "#notifications-alerts" },
+        { label: "Modal Dialogs", desc: "Interactive centered, large, and confirmation modals", icon: "bell", href: "#notifications-modals" },
+        { label: "Toast Notifications", desc: "Floating auto-dismiss toast dispatcher", icon: "bell", href: "#notifications-toasts" },
+        { label: "Widgets Collection", desc: "Sparkline KPI cards, resource meters, profile widgets", icon: "calculator", href: "#widgets" },
         { label: "Kanban Task Board", desc: "Interactive sprint backlog, task stages, team assignees", icon: "trello", href: "#kanban" },
         { label: "E-Commerce Products", desc: "Catalog listings, inventory levels, SKU management", icon: "box", href: "#products" },
         { label: "Invoices & Billing", desc: "Client statements, printable invoices, payment records", icon: "file-text", href: "#invoices" },
@@ -141,8 +160,13 @@ window.CommandPalette = (function () {
         { label: "Users Management", desc: "Manage 20+ members, roles, statuses, and permissions", icon: "users", href: "#users" },
         { label: "Orders & Invoices", desc: "View real-time transactions, payment methods, CSV ledger", icon: "receipt", href: "#orders" },
         { label: "Reports & Exports", desc: "Download executive audits, SLA metrics, CSV digests", icon: "file-spreadsheet", href: "#reports" },
-        { label: "UI Component Kit", desc: "Buttons, alerts, badges, modals, form inputs", icon: "layout", href: "#components" },
+        { label: "UI Component Kit", desc: "Comprehensive component library showcase", icon: "layout", href: "#components" },
         { label: "Sign In Flow", desc: "Authentication sign in screen preview", icon: "log-in", href: "#auth-login" },
+        { label: "Sign Up Flow", desc: "Registration form layout preview", icon: "user-plus", href: "#auth-register" },
+        { label: "Forgot Password", desc: "Password recovery flow preview", icon: "key", href: "#auth-forgot" },
+        { label: "Lock Screen", desc: "Screen locked pattern with PIN verification", icon: "lock", href: "#lock-screen" },
+        { label: "Error 404 Page", desc: "Resource not found error layout", icon: "alert-octagon", href: "#404" },
+        { label: "Error 500 Page", desc: "Internal server error layout with trace dump", icon: "alert-triangle", href: "#error-500" },
         { label: "System Settings", desc: "Profile details, preferences, security keys, appearance", icon: "settings", href: "#settings" },
         { label: "Help & Knowledge Base", desc: "Documentation, FAQs, shortcuts, and support tickets", icon: "help-circle", href: "#help" }
       ];
@@ -278,6 +302,101 @@ window.App = (function () {
         AnalyticsPage.render(container);
         break;
 
+      case "colors":
+        document.title = "Theme Colors • DashPulse Admin";
+        DemoThemePage.renderColors(container);
+        break;
+
+      case "typography":
+        document.title = "Typography • DashPulse Admin";
+        DemoThemePage.renderTypography(container);
+        break;
+
+      case "base-accordion":
+        document.title = "Accordion & Collapse • DashPulse Admin";
+        DemoBasePage.renderAccordion(container);
+        break;
+
+      case "base-cards":
+        document.title = "Cards Layout • DashPulse Admin";
+        DemoBasePage.renderCards(container);
+        break;
+
+      case "base-carousel":
+        document.title = "Carousel Slider • DashPulse Admin";
+        DemoBasePage.renderCarousel(container);
+        break;
+
+      case "base-pagination":
+        document.title = "Pagination & Progress • DashPulse Admin";
+        DemoBasePage.renderPagination(container);
+        break;
+
+      case "buttons":
+        document.title = "Buttons • DashPulse Admin";
+        DemoButtonsPage.render(container, "buttons");
+        break;
+
+      case "button-groups":
+        document.title = "Button Groups • DashPulse Admin";
+        DemoButtonsPage.render(container, "button-groups");
+        break;
+
+      case "dropdowns":
+        document.title = "Dropdown Menus • DashPulse Admin";
+        DemoButtonsPage.render(container, "dropdowns");
+        break;
+
+      case "forms":
+        document.title = "Form Controls • DashPulse Admin";
+        DemoFormsPage.render(container, "forms");
+        break;
+
+      case "form-select":
+        document.title = "Select Menus • DashPulse Admin";
+        DemoFormsPage.render(container, "form-select");
+        break;
+
+      case "form-checks":
+        document.title = "Checks & Radios • DashPulse Admin";
+        DemoFormsPage.render(container, "form-checks");
+        break;
+
+      case "form-validation":
+        document.title = "Form Validation • DashPulse Admin";
+        DemoFormsPage.render(container, "form-validation");
+        break;
+
+      case "charts":
+        document.title = "Charts Gallery • DashPulse Admin";
+        DemoChartsPage.render(container);
+        break;
+
+      case "icons":
+        document.title = "Icons Library • DashPulse Admin";
+        DemoIconsPage.render(container);
+        break;
+
+      case "notifications-alerts":
+        document.title = "Alerts • DashPulse Admin";
+        DemoNotificationsPage.render(container, "notifications-alerts");
+        break;
+
+      case "notifications-modals":
+        document.title = "Modals • DashPulse Admin";
+        DemoNotificationsPage.render(container, "notifications-modals");
+        break;
+
+      case "notifications-toasts":
+        document.title = "Toasts • DashPulse Admin";
+        DemoNotificationsPage.render(container, "notifications-toasts");
+        break;
+
+      case "widgets":
+        document.title = "Widgets Collection • DashPulse Admin";
+        DemoWidgetsPage.render(container);
+        break;
+
       case "kanban":
         document.title = "Kanban Board • DashPulse Admin";
         KanbanPage.render(container);
@@ -348,6 +467,16 @@ window.App = (function () {
         AuthShowcasePage.render(container, "lock");
         break;
 
+      case "404":
+        document.title = "404 Not Found • DashPulse Admin";
+        HelpPage.render404(container, "404");
+        break;
+
+      case "error-500":
+        document.title = "500 Server Error • DashPulse Admin";
+        DemoErrorsPage.render500(container);
+        break;
+
       case "settings":
         document.title = "Settings • DashPulse Admin";
         SettingsPage.render(container);
@@ -375,11 +504,46 @@ window.App = (function () {
       const targetPath = href.replace("#", "").split("?")[0].toLowerCase();
       const isActive = targetPath === currentPath || (targetPath === "users" && currentPath === "user-detail");
 
+      const isSubItem = link.closest(".nav-group-items") !== null;
+
       if (isActive) {
-        link.className = "nav-link-item nav-item-active flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-colors";
+        if (isSubItem) {
+          link.className = "nav-link-item flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 transition-colors";
+          // Expand parent group and rotate chevron
+          const parentGroup = link.closest(".nav-group-items");
+          if (parentGroup) {
+            parentGroup.classList.remove("hidden");
+            const parentToggle = parentGroup.parentElement ? parentGroup.parentElement.querySelector(".nav-chevron") : null;
+            if (parentToggle) parentToggle.classList.add("rotate-180");
+          }
+        } else {
+          link.className = "nav-link-item nav-item-active flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-colors";
+        }
       } else {
-        link.className = "nav-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors";
+        if (isSubItem) {
+          link.className = "nav-link-item flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40 transition-colors";
+        } else {
+          link.className = "nav-link-item flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors";
+        }
       }
+    });
+  }
+
+  function initNavDropdowns() {
+    document.querySelectorAll(".nav-dropdown-toggle").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        const targetId = btn.getAttribute("data-target");
+        const groupItems = document.getElementById(targetId);
+        const chevron = btn.querySelector(".nav-chevron");
+        if (groupItems) {
+          const isClosed = groupItems.classList.contains("hidden");
+          groupItems.classList.toggle("hidden", !isClosed);
+          if (chevron) {
+            chevron.classList.toggle("rotate-180", isClosed);
+          }
+        }
+      });
     });
   }
 
@@ -565,6 +729,7 @@ window.App = (function () {
   function init() {
     AppTheme.init();
     applySidebarState();
+    initNavDropdowns();
     initNotificationsDropdown();
     initProfileDropdown();
     initKeyboardShortcuts();

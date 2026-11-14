@@ -508,7 +508,7 @@ window.App = (function () {
 
       if (isActive) {
         if (isSubItem) {
-          link.className = "nav-link-item flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 transition-colors";
+          link.className = "nav-link-item text-left flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 transition-colors";
           // Expand parent group and rotate chevron
           const parentGroup = link.closest(".nav-group-items");
           if (parentGroup) {
@@ -517,13 +517,13 @@ window.App = (function () {
             if (parentToggle) parentToggle.classList.add("rotate-180");
           }
         } else {
-          link.className = "nav-link-item nav-item-active flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-colors";
+          link.className = "nav-link-item nav-item-active text-left flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-colors";
         }
       } else {
         if (isSubItem) {
-          link.className = "nav-link-item flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40 transition-colors";
+          link.className = "nav-link-item text-left flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40 transition-colors";
         } else {
-          link.className = "nav-link-item flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors";
+          link.className = "nav-link-item text-left flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-colors";
         }
       }
     });
